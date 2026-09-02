@@ -1,0 +1,24 @@
+{
+  "task": "prune",
+  "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B",
+  "method": "wanda",
+  "params": {
+    "sparsity": 0.5,
+    "structure": "2:4",
+    "layer_reports_n": 168,
+    "overall_sparsity": 0.5
+  },
+  "metrics": {
+    "ppl": 70.1408,
+    "nll": 4.250505,
+    "n_tokens": 65504,
+    "n_blocks": 32,
+    "block_size": 2048
+  },
+  "env": {
+    "torch": "2.14.0+cu126",
+    "cuda_available": true,
+    "device_name": "NVIDIA RTX A5000",
+    "timestamp": "2026-09-03 01:24:16"
+  }
+}

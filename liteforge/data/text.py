@@ -10,10 +10,24 @@ logger = logging.getLogger(__name__)
 BLOCK_SIZE = 2048
 
 
+_WIKI_LOCAL_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "cache", "wikitext",
+)
+
+
 def load_wikitext2(split: str = "test") -> str:
-    """WikiText-2 raw（PPL 标准评测集）。自动尊重 HF_ENDPOINT（如 hf-mirror.com）。"""
+    """WikiText-2 raw（PPL 标准评测集）。
+
+    优先本地 parquet（cache/wikitext/{split}.parquet，见 scripts/），
+    否则在线下载（尊重 HF_ENDPOINT，如 hf-mirror.com）。
+    """
     from datasets import load_dataset
-    ds = load_dataset("wikitext", "wikitext-2-raw-v1", split=split)
+    local = os.path.join(_WIKI_LOCAL_DIR, f"{split}.parquet")
+    if os.path.exists(local):
+        ds = load_dataset("parquet", data_files={split: local}, split=split)
+    else:
+        ds = load_dataset("wikitext", "wikitext-2-raw-v1", split=split)
     return "\n\n".join(t for t in ds["text"] if t)
 
 

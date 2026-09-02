@@ -7,9 +7,8 @@ dist/
 .venv/
 .pytest_cache/
 
-# 实验产物（原始结果不入库，汇总表入库）
-results/*.json
-!results/example_*.json
+# 实验产物：results/ 下的 JSON 记录与汇总表是证据链，入库；
+# 仅排除可能的大体积原始输出
 runs/
 outputs/
 

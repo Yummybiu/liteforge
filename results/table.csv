@@ -1,0 +1,14 @@
+model,method,sparsity,bits,group_size,ppl,forward_tokens_per_s,generate_tokens_per_s
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B,dense,,,,13.2064,,13.9
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B,wanda,0.5,,,25.5227,,13.4
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B,magnitude,0.5,,,485.5846,,
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B,rtn,,4,128,15.6889,,
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B,rtn,,8,128,13.2184,,
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B,wanda,0.25,,,13.7198,,
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B,wanda,0.6,,,76.7116,,
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B,wanda,0.5,,,70.1408,,
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B,rtn,,3,128,51.3712,,
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B,rtn,,4,0,23.9901,,
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B,dense,,,,9.261,,14.3
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B,wanda,0.5,,,13.3361,,14.5
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B,rtn,,4,128,10.3747,,

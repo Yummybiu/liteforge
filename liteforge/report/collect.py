@@ -43,6 +43,7 @@ def to_markdown(records: list) -> str:
             rec.get("model", "?"),
             rec.get("method", "?"),
             str(rec.get("params", {}).get("sparsity", "")),
+            str(rec.get("params", {}).get("structure", "")),
             str(rec.get("params", {}).get("bits", "")),
             str(rec.get("params", {}).get("group_size", "")),
         )
@@ -54,8 +55,10 @@ def to_markdown(records: list) -> str:
     )
     lines = []
     for key, rec in sorted(best.items()):
-        model, method, sparsity, bits, group = key
-        param = "/".join(p for p in (sparsity, bits and f"W{bits}", group and f"g{group}") if p) or "-"
+        model, method, sparsity, structure, bits, group = key
+        parts = [sparsity + ("(2:4)" if structure == "2:4" else "") if sparsity else "",
+                 f"W{bits}" if bits else "", f"g{group}" if group else ""]
+        param = "/".join(p for p in parts if p) or "-"
         ppl = rec.get("metrics", {}).get("ppl")
         tok_s = rec.get("metrics", {}).get("generate_tokens_per_s")
         lines.append(
