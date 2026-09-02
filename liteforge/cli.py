@@ -86,23 +86,50 @@ def cmd_eval_ppl(args):
 def cmd_prune(args):
     from .data.text import BlockBatcher, load_eval_text
     from .prune import MagnitudePruner, WandaPruner
-    from .utils import find_linears
 
     model, tokenizer = load_pair(args)
-    params = {"sparsity": args.sparsity, "structure": args.structure}
 
+    sparsity = args.sparsity
+    if args.sparsity_map:
+        from .utils import load_json
+        sparsity = load_json(args.sparsity_map)
+        vals = [v for v in sparsity.values()]
+        params = {"sparsity_map": args.sparsity_map,
+                  "mean_sparsity": round(sum(vals) / len(vals), 4)}
+    else:
+        params = {"sparsity": args.sparsity, "structure": args.structure}
+
+    needs_calib = args.method in ("wanda", "obc") or bool(args.sparsity_map)
     calib = None
-    if args.method == "wanda":
+    if needs_calib:
         text = load_eval_text(args.calib_dataset)
         calib = BlockBatcher(tokenizer, text, block_size=args.seqlen,
                              batch_size=args.batch_size)
-    pruner_cls = WandaPruner if args.method == "wanda" else MagnitudePruner
-    pruner = pruner_cls(model, type("C", (), {
-        "sparsity": args.sparsity, "structure": args.structure,
-        "include": tuple(args.include) if args.include else (),
-        "exclude": ("lm_head", "embed_out"),
-    })())
-    result = pruner.run(calib_batches=calib, max_batches=args.calib_size)
+
+    if args.dry_score:
+        # 只算敏感度不落刀（SGMix 第一步）
+        from .prune import OBCPruner
+        from .prune.base import PruneConfig
+        pruner = OBCPruner(model, PruneConfig(sparsity=args.sparsity),
+                           percdamp=args.percdamp)
+        sens = pruner.score_dry(calib, max_batches=args.calib_size)
+        from .utils import save_json
+        save_json(sens, args.dry_score)
+        logger.info("敏感度已写入 %s（%d 层）", args.dry_score, len(sens))
+        return None
+
+    if args.method == "obc":
+        from .prune import OBCPruner
+        from .prune.base import PruneConfig
+        cfg = PruneConfig(sparsity=sparsity, structure=args.structure)
+        pruner = OBCPruner(model, cfg, percdamp=args.percdamp)
+        result = pruner.run(calib_batches=calib, max_batches=args.calib_size)
+    else:
+        pruner_cls = WandaPruner if args.method == "wanda" else MagnitudePruner
+        from .prune.base import PruneConfig
+        cfg = PruneConfig(sparsity=sparsity, structure=args.structure)
+        pruner = pruner_cls(model, cfg)
+        result = pruner.run(calib_batches=calib, max_batches=args.calib_size)
     params.update({"layer_reports_n": len(result.layer_reports),
                    "overall_sparsity": result.overall_sparsity})
 
@@ -144,6 +171,25 @@ def cmd_quant_rtn(args):
 
 
 def cmd_quant_gptq(args):
+    from .utils import save_json
+    if args.impl == "scratch":
+        from .data.text import BlockBatcher, load_eval_text
+        from .quant import GPTQQuantizer, RTNConfig
+        model, tokenizer = load_pair(args)
+        cfg = RTNConfig(bits=args.bits, group_size=args.group_size)
+        calib = BlockBatcher(tokenizer, load_eval_text(args.calib_dataset),
+                             block_size=args.seqlen, batch_size=args.batch_size)
+        q = GPTQQuantizer(model, cfg, percdamp=args.percdamp)
+        report = q.quantize_(calib, max_batches=args.calib_size)
+        metrics = eval_ppl_and_speed(model, tokenizer, args) if args.eval else {}
+        if args.restore:
+            q.restore()
+        rec = build_record("quant-gptq-scratch", args.model, "gptq",
+                           {"bits": args.bits, "group_size": args.group_size,
+                            "impl": "scratch"}, metrics)
+        rec["quant_report"] = report
+        return save_json(rec, args.out or default_out("gptq_scratch"))
+    # 库版（可部署打包格式）
     from .quant.wrappers import quantize_gptq
     model, tokenizer = load_pair(args)
     from .data.text import load_eval_text
@@ -151,9 +197,10 @@ def cmd_quant_gptq(args):
     quantize_gptq(model, tokenizer, calib_texts, bits=args.bits,
                   group_size=args.group_size)
     metrics = eval_ppl_and_speed(model, tokenizer, args) if args.eval else {}
-    rec = build_record("quant-gptq", args.model, "gptq",
-                       {"bits": args.bits, "group_size": args.group_size}, metrics)
-    return save_json(rec, args.out or default_out("gptq"))
+    rec = build_record("quant-gptq-lib", args.model, "gptq",
+                       {"bits": args.bits, "group_size": args.group_size,
+                        "impl": "lib"}, metrics)
+    return save_json(rec, args.out or default_out("gptq_lib"))
 
 
 def cmd_quant_awq(args):
@@ -205,15 +252,22 @@ def main(argv=None):
     sp.add_argument("--out", default=None)
     sp.set_defaults(fn=cmd_eval_ppl)
 
-    sp = sub.add_parser("prune", help="剪枝（wanda/magnitude）")
+    sp = sub.add_parser("prune", help="剪枝（wanda/magnitude/obc）")
     add_model_args(sp); add_eval_args(sp)
-    sp.add_argument("--method", default="wanda", choices=["wanda", "magnitude"])
+    sp.add_argument("--method", default="wanda",
+                    choices=["wanda", "magnitude", "obc"])
     sp.add_argument("--sparsity", type=float, default=0.5)
     sp.add_argument("--structure", default="unstructured",
                     choices=["unstructured", "2:4"])
+    sp.add_argument("--sparsity-map", default=None,
+                    help="JSON：逐层稀疏度（SGMix 流程产物）")
+    sp.add_argument("--percdamp", type=float, default=0.01,
+                    help="OBC/GPTQ 的 Hessian 阻尼比例")
+    sp.add_argument("--dry-score", default=None,
+                    help="只计算 OBS 敏感度并写入该 JSON，不剪枝")
     sp.add_argument("--calib-dataset", default="wikitext2:train")
     sp.add_argument("--calib-size", type=int, default=16,
-                    help="校准批数（wanda 用）")
+                    help="校准批数（wanda/obc 用）")
     sp.add_argument("--include", nargs="*", default=[],
                     help="只剪名字含这些子串的层")
     sp.add_argument("--save", default=None, help="保存剪枝后模型目录")
@@ -232,12 +286,16 @@ def main(argv=None):
     sp.add_argument("--out", default=None)
     sp.set_defaults(fn=cmd_quant_rtn)
 
-    sp = sub.add_parser("quant-gptq", help="GPTQ（需 gptqmodel）")
+    sp = sub.add_parser("quant-gptq", help="GPTQ（--impl scratch=自研 | lib=可部署打包）")
     add_model_args(sp); add_eval_args(sp)
+    sp.add_argument("--impl", default="scratch", choices=["scratch", "lib"])
     sp.add_argument("--bits", type=int, default=4)
     sp.add_argument("--group-size", type=int, default=128)
+    sp.add_argument("--percdamp", type=float, default=0.01)
     sp.add_argument("--calib-dataset", default="wikitext2:train")
+    sp.add_argument("--calib-size", type=int, default=16)
     sp.add_argument("--calib-chars", type=int, default=200_000)
+    sp.add_argument("--restore", action="store_true")
     sp.add_argument("--eval", action="store_true")
     sp.add_argument("--out", default=None)
     sp.set_defaults(fn=cmd_quant_gptq)

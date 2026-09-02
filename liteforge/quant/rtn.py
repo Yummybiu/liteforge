@@ -50,6 +50,37 @@ def _quant_groups(w: torch.Tensor, bits: int, symmetric: bool):
     return deq, (deq - w).abs().mean().item(), scale
 
 
+def group_params(w: torch.Tensor, bits: int, group_size: int, symmetric: bool):
+    """计算量化参数 (scale, zero)，形状与 w 相同（已按组扩展）。
+
+    供 RTN 和 GPTQ（误差反馈量化）共用。group_size=0 → 每输出行一组。
+    """
+    qmax = 2 ** (bits - 1) - 1
+    qmin, qpeak = 0, 2 ** bits - 1
+    wf = w.to(torch.float32)
+    if group_size and group_size > 0 and wf.shape[-1] % group_size == 0:
+        g = wf.reshape(wf.shape[0], -1, group_size)
+        if symmetric:
+            s = g.abs().amax(dim=-1, keepdim=True).clamp(min=1e-8) / qmax
+            z = torch.zeros_like(s)
+        else:
+            gmin, gmax = g.amin(dim=-1, keepdim=True), g.amax(dim=-1, keepdim=True)
+            s = (gmax - gmin).clamp(min=1e-8) / qpeak
+            z = torch.round(-gmin / s).clamp(qmin, qpeak)
+        s = s.expand_as(g).reshape(wf.shape)
+        z = z.expand_as(g).reshape(wf.shape)
+        return s, z
+    # per-row（group_size=0 或不可整除时的降级）
+    if symmetric:
+        s = wf.abs().amax(dim=-1, keepdim=True).clamp(min=1e-8) / qmax
+        z = torch.zeros_like(s)
+    else:
+        wmin, wmax = wf.amin(dim=-1, keepdim=True), wf.amax(dim=-1, keepdim=True)
+        s = (wmax - wmin).clamp(min=1e-8) / qpeak
+        z = torch.round(-wmin / s).clamp(qmin, qpeak)
+    return s.expand_as(wf), z.expand_as(wf)
+
+
 def quantize_tensor(w: torch.Tensor, bits: int, group_size: int, symmetric: bool) -> torch.Tensor:
     """量化再反量化一个 [n_out, n_in] 权重，返回同 dtype 的伪量化权重。"""
     orig_dtype = w.dtype

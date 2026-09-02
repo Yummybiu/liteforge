@@ -71,6 +71,13 @@ def group_2to4_mask(score: torch.Tensor) -> torch.Tensor:
     return mask.view(n_out, n_cols)
 
 
+def layer_sparsity_target(cfg_sparsity, name: str) -> float:
+    """解析逐层稀疏度：标量直接返回；dict 按 layer 名查（缺省用 __default__）。"""
+    if isinstance(cfg_sparsity, dict):
+        return float(cfg_sparsity.get(name, cfg_sparsity.get("__default__", 0.5)))
+    return float(cfg_sparsity)
+
+
 def layer_sparsity(linear: nn.Linear) -> float:
     w = linear.weight.data
     return (w == 0).float().mean().item()
@@ -153,6 +160,7 @@ class BasePruner:
         pruned_elems = total_elems = 0
 
         for name, m in self.linears:
+            s = layer_sparsity_target(self.config.sparsity, name)
             w = m.weight.data
             score = scores[name].to(w.device)
             if self.config.structure == "2:4":
