@@ -1,0 +1,31 @@
+# 实验配置示例：Qwen2.5-0.5B 冒烟（与 scripts/run_smoke.sh 等价，供程序化调用参考）
+model: Qwen/Qwen2.5-0.5B
+device: auto          # A5000 -> cuda
+dtype: auto           # Ampere+ -> bf16
+seed: 42
+eval:
+  dataset: wikitext2
+  seqlen: 2048
+  batch_size: 8
+  max_blocks: 32      # 32×2048 ≈ 65K tokens，冒烟口径；正式实验 ≥256
+  speed: true
+steps:
+  - task: eval-ppl                       # dense 基线
+  - task: prune
+    method: wanda
+    sparsity: 0.5
+    calib_dataset: wikitext2:train
+    calib_size: 16
+    eval: true
+  - task: prune
+    method: magnitude
+    sparsity: 0.5
+    eval: true
+  - task: quant-rtn
+    bits: 4
+    group_size: 128
+    eval: true
+  - task: quant-rtn
+    bits: 8
+    group_size: 128
+    eval: true

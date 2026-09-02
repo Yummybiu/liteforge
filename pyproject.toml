@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "liteforge"
+version = "0.1.0"
+description = "LiteForge：LLM 压缩-评测-部署一站式工具箱（剪枝 / 量化 / 困惑度评测 / 推理基准）"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "LiteForge contributors" }]
+keywords = ["llm", "pruning", "quantization", "wanda", "gptq", "awq", "perplexity", "vllm"]
+dependencies = [
+    "torch>=2.1",
+    "transformers>=4.44",
+    "numpy",
+    "pyyaml",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+quant = ["gptqmodel", "autoawq"]
+eval = ["datasets"]
+plot = ["matplotlib"]
+deploy = ["requests"]
+dev = ["pytest"]
+
+[project.scripts]
+liteforge = "liteforge.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["liteforge*"]

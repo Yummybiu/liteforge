@@ -1,0 +1,20 @@
+# 实验配置示例：GPTQ W4 部署量化 + vLLM 实测（实验室 GPU 机器）
+# 前置：pip install gptqmodel vllm
+model: Qwen/Qwen2.5-1.5B
+device: cuda
+dtype: bf16
+steps:
+  - task: quant-gptq
+    bits: 4
+    group_size: 128
+    calib_dataset: wikitext2:train
+    calib_chars: 200000
+    save: outputs/qwen15b_gptq_w4
+    eval: true
+deploy_bench:                       # docs 见 liteforge/deploy/vllm_bench.py
+  dense:
+    serve: vllm serve Qwen/Qwen2.5-1.5B --max-model-len 4096
+    bench: python -m liteforge.deploy.vllm_bench --model Qwen/Qwen2.5-1.5B --num-requests 128 --concurrency 16
+  int4:
+    serve: vllm serve outputs/qwen15b_gptq_w4 --max-model-len 4096
+    bench: python -m liteforge.deploy.vllm_bench --model outputs/qwen15b_gptq_w4 --num-requests 128 --concurrency 16

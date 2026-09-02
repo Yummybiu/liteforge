@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+
+# 实验产物（原始结果不入库，汇总表入库）
+results/*.json
+!results/example_*.json
+runs/
+outputs/
+
+# 模型与数据缓存
+cache/
+models/
+data/*.txt
+*.safetensors
+*.bin
+
+# IDE / 系统
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
