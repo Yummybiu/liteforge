@@ -15,3 +15,6 @@
 | Qwen2.5-1.5B | dense | - | 9.261 | 14.3 | `20260903_013237_dense.json` |
 | Qwen2.5-1.5B | rtn | W4/g128 | 10.3747 | - | `20260903_013514_rtn_w4.json` |
 | Qwen2.5-1.5B | wanda | 0.5 | 13.3361 | 14.5 | `20260903_013427_prune_wanda.json` |
+| Qwen2.5-3B | dense | - | 8.0142 | - | `20260903_014830_dense.json` |
+| Qwen2.5-3B | rtn | W4/g128 | 9.0027 | - | `20260903_015035_rtn_w4.json` |
+| Qwen2.5-3B | wanda | 0.5 | 10.8894 | - | `20260903_014952_prune_wanda.json` |

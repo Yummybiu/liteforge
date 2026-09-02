@@ -12,3 +12,6 @@ F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B,rtn,,4,0,23.9901,,
 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B,dense,,,,9.261,,14.3
 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B,wanda,0.5,,,13.3361,,14.5
 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B,rtn,,4,128,10.3747,,
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-3B,dense,,,,8.0142,,
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-3B,wanda,0.5,,,10.8894,,
+F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-3B,rtn,,4,128,9.0027,,
