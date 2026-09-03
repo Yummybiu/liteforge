@@ -1,0 +1,29 @@
+=== 0.5B OBC-dynamic 50% (SparseGPT 忠实版) ===
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   6%|▌         | 17/290 [00:00<00:01, 168.04it/s]Loading weights:  12%|█▏        | 34/290 [00:00<00:02, 119.98it/s]Loading weights:  16%|█▌        | 47/290 [00:00<00:02, 117.04it/s]Loading weights:  21%|██        | 60/290 [00:00<00:03, 75.99it/s] Loading weights:  24%|██▍       | 71/290 [00:00<00:02, 79.47it/s]Loading weights:  28%|██▊       | 81/290 [00:00<00:02, 76.57it/s]Loading weights:  33%|███▎      | 97/290 [00:01<00:02, 95.56it/s]Loading weights:  38%|███▊      | 111/290 [00:01<00:01, 104.35it/s]Loading weights:  42%|████▏     | 123/290 [00:01<00:01, 102.54it/s]Loading weights:  47%|████▋     | 135/290 [00:01<00:01, 104.62it/s]Loading weights:  50%|█████     | 146/290 [00:01<00:01, 93.39it/s] Loading weights:  54%|█████▍    | 156/290 [00:01<00:01, 91.71it/s]Loading weights:  57%|█████▋    | 166/290 [00:01<00:01, 91.95it/s]Loading weights:  61%|██████▏   | 178/290 [00:01<00:01, 96.40it/s]Loading weights: 100%|██████████| 290/290 [00:01<00:00, 151.70it/s]
+23:26:08 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+23:26:19 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+23:26:36 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+23:26:36 | INFO    | [obc] 采集校准 Hessian (XᵀX) + 逐层阻尼求逆 ...
+23:33:05 | INFO    | [obc] 完成：整体稀疏度 50.00%，耗时 388.5s
+23:33:07 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+23:33:09 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+23:33:26 | INFO    | 剪枝后 overall_sparsity=50.00%  results/20260903_233326_prune_obc.json
+=== 1.5B OBC-dynamic 50% (SparseGPT 忠实版) ===
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   6%|▌         | 20/338 [00:00<00:01, 196.97it/s]Loading weights:  14%|█▍        | 47/338 [00:00<00:01, 238.87it/s]Loading weights:  21%|██        | 71/338 [00:00<00:01, 210.61it/s]Loading weights:  28%|██▊       | 93/338 [00:00<00:01, 181.26it/s]Loading weights:  33%|███▎      | 112/338 [00:00<00:01, 183.16it/s]Loading weights:  43%|████▎     | 144/338 [00:00<00:00, 221.31it/s]Loading weights:  49%|████▉     | 167/338 [00:00<00:00, 184.10it/s]Loading weights:  56%|█████▌    | 189/338 [00:00<00:00, 189.94it/s]Loading weights: 100%|██████████| 338/338 [00:01<00:00, 322.64it/s]
+23:34:09 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B 加载完成：1544M params @ cuda:0, dtype=torch.bfloat16
+23:34:12 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+23:34:30 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+23:34:30 | INFO    | [obc] 采集校准 Hessian (XᵀX) + 逐层阻尼求逆 ...
+23:51:17 | INFO    | [obc] 完成：整体稀疏度 50.00%，耗时 1007.5s
+23:51:19 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+23:51:21 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+23:51:42 | INFO    | 剪枝后 overall_sparsity=50.00%  results/20260903_235142_prune_obc.json
+=== 3B OBC-dynamic 50% (SparseGPT 忠实版) ===
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]Loading weights:   7%|▋         | 30/434 [00:00<00:01, 277.55it/s]Loading weights:  13%|█▎        | 58/434 [00:00<00:01, 241.70it/s]Loading weights:  23%|██▎       | 99/434 [00:00<00:01, 308.58it/s]Loading weights:  30%|███       | 131/434 [00:00<00:01, 259.97it/s]Loading weights:  37%|███▋      | 160/434 [00:00<00:01, 248.89it/s]Loading weights:  43%|████▎     | 186/434 [00:00<00:01, 246.19it/s]Loading weights:  49%|████▉     | 212/434 [00:00<00:00, 228.24it/s]Loading weights:  55%|█████▍    | 237/434 [00:00<00:00, 229.50it/s]Loading weights:  60%|██████    | 261/434 [00:01<00:00, 227.99it/s]Loading weights:  68%|██████▊   | 294/434 [00:01<00:00, 253.40it/s]Loading weights:  74%|███████▍  | 321/434 [00:01<00:00, 257.59it/s]Loading weights:  80%|████████  | 348/434 [00:01<00:00, 228.16it/s]Loading weights:  87%|████████▋ | 376/434 [00:01<00:00, 241.26it/s]Loading weights: 100%|██████████| 434/434 [00:01<00:00, 282.27it/s]
+23:52:47 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-3B 加载完成：3086M params @ cuda:0, dtype=torch.bfloat16
+23:52:50 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+23:53:07 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+23:53:07 | INFO    | [obc] 采集校准 Hessian (XᵀX) + 逐层阻尼求逆 ...
