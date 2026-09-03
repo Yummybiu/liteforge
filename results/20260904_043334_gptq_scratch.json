@@ -1,0 +1,32 @@
+{
+  "task": "quant-gptq-scratch",
+  "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-3B",
+  "method": "gptq",
+  "params": {
+    "bits": 4,
+    "group_size": 128,
+    "impl": "scratch"
+  },
+  "metrics": {
+    "ppl": 8.3432,
+    "nll": 2.121453,
+    "n_tokens": 65504,
+    "n_blocks": 32,
+    "block_size": 2048
+  },
+  "env": {
+    "torch": "2.14.0+cu126",
+    "cuda_available": true,
+    "device_name": "NVIDIA RTX A5000",
+    "timestamp": "2026-09-04 04:33:34"
+  },
+  "quant_report": {
+    "method": "gptq-scratch",
+    "bits": 4,
+    "group_size": 128,
+    "symmetric": false,
+    "n_layers": 252,
+    "mean_abs_weight_err": 0.0023,
+    "duration_s": 5510.27
+  }
+}
