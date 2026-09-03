@@ -27,3 +27,13 @@
 [transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
 23:53:07 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
 23:53:07 | INFO    | [obc] 采集校准 Hessian (XᵀX) + 逐层阻尼求逆 ...
+02:59:59 | INFO    | [obc] 完成：整体稀疏度 50.00%，耗时 11212.1s
+03:00:01 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+03:00:03 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+03:00:15 | INFO    | 剪枝后 overall_sparsity=50.00%  results/20260904_030015_prune_obc.json
+=== 3B 自研 GPTQ W4g128 ===
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]Loading weights:  69%|██████▊   | 298/434 [00:00<00:00, 2967.14it/s]Loading weights: 100%|██████████| 434/434 [00:00<00:00, 3871.43it/s]
+03:00:39 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-3B 加载完成：3086M params @ cuda:0, dtype=torch.bfloat16
+03:00:41 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+03:00:57 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
