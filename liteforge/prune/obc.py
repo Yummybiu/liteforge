@@ -29,6 +29,44 @@ from ..utils.hessian import collect_xtx, damp_inverse
 logger = logging.getLogger(__name__)
 
 
+def _sequential_zero_dynamic(W: torch.Tensor, U: torch.Tensor, sparsity: float,
+                             blocksize: int = 128) -> torch.Tensor:
+    """SparseGPT 忠实版：block 级动态重评分 + 顺序误差补偿。
+
+    静态预选掩码的缺陷：w²/H⁻¹diag 打分会集中删除"被强保护的列簇"，
+    但簇内保护者彼此删除后保护失效，高稀疏度下实际损失远超单列估计。
+    官方解法：每个 block 处理时，用**当前已补偿**的权重在该 block 内
+    重新评分、重新决定删留（跨块动态、块内定秩）。
+    """
+    n_out, n_in = W.shape
+    n_keep_row = max(1, int(round(n_in * (1.0 - sparsity))))
+    diag = U.diagonal().clamp(min=1e-12)
+    for b0 in range(0, n_in, blocksize):
+        b1 = min(b0 + blocksize, n_in)
+        # 块内定秩：用当前权重评分，每行保留块内 top-n_keep_blk
+        blk_len = b1 - b0
+        n_keep_blk = max(1, int(round(blk_len * (1.0 - sparsity))))
+        Wblk = W[:, b0:b1]
+        score_blk = Wblk * Wblk / (diag[b0:b1] ** 2).unsqueeze(0)
+        mask_blk = per_row_topk_mask(score_blk, 1.0 - n_keep_blk / blk_len)
+        block_err = torch.zeros(blk_len, n_out, device=W.device)
+        for j in range(b0, b1):
+            d = U[j, j]
+            w = W[:, j]
+            removed = mask_blk[:, j - b0] == 0
+            if not removed.any():
+                continue
+            err = torch.zeros_like(w)
+            err[removed] = w[removed] / d
+            W[removed, j] = 0
+            if j + 1 < b1:
+                W[removed, j + 1:b1] -= err[removed].unsqueeze(1) * U[j, j + 1:b1].unsqueeze(0)
+            block_err[j - b0] = err
+        if b1 < n_in:
+            W[:, b1:] -= block_err.T @ U[b0:b1, b1:]
+    return W
+
+
 def _sequential_zero(W: torch.Tensor, U: torch.Tensor, keep_mask: torch.Tensor,
                      blocksize: int = 128) -> torch.Tensor:
     """顺序误差补偿：已删行把误差按 Cholesky 因子传播给该行后续列。
@@ -57,40 +95,52 @@ class OBCPruner(BasePruner):
     method_name = "obc"
 
     def __init__(self, model, config: PruneConfig, percdamp: float = 0.01,
-                 blocksize: int = 128):
+                 blocksize: int = 128, mask_mode: str = "dynamic"):
         super().__init__(model, config)
         self.percdamp = percdamp
         self.blocksize = blocksize
+        self.mask_mode = mask_mode  # dynamic=SparseGPT 忠实版 | static=静态预选（消融用）
 
     def compute_scores(self, layer_inputs) -> dict:  # 不走基类的 Wanda 式打分
         raise NotImplementedError
 
-    def _scores_from_hessian(self, H_dict):
-        scores = {}
-        for name, m in self.linears:
-            Hinv = damp_inverse(H_dict[name], self.percdamp)
-            Hdiag = Hinv.diagonal().clamp(min=1e-12)
-            w = m.weight.data.detach().to(torch.float64)
-            scores[name] = (w * w / Hdiag.unsqueeze(0)).to(torch.float32)
-        return scores
+    def _layer_U(self, H, percdamp=None):
+        """单层 Hessian → float32 Cholesky 上三角（用完即弃，避免全模型驻留 U）。"""
+        Hinv = damp_inverse(H, percdamp or self.percdamp)
+        return Hinv, torch.linalg.cholesky(Hinv, upper=True).to(torch.float32)
+
+    def prepare(self, calib_batches, max_batches: int = 32):
+        """采集全模型 Hessian（运行期驻留的是 H 本身，U 逐层现算现放）。"""
+        H_dict = collect_xtx(self.model, self.linears, calib_batches, max_batches)
+        return H_dict
 
     def run(self, calib_batches=None, max_batches: int = 32) -> PruneResult:
         assert calib_batches is not None, "OBC 需要校准数据"
         t0 = time.time()
-        logger.info("[obc] 采集校准 Hessian (XᵀX) + 阻尼求逆 ...")
-        scores = self.prepare(calib_batches, max_batches)
+        logger.info("[obc] 采集校准 Hessian (XᵀX) + 逐层阻尼求逆 ...")
+        H_dict = self.prepare(calib_batches, max_batches)
 
         layer_reports, pruned, total = [], 0, 0
         for name, m in self.linears:
             s = layer_sparsity_target(self.config.sparsity, name)
+            Hinv, U = self._layer_U(H_dict.pop(name))
             W = m.weight.data.to(torch.float32)
-            mask = per_row_topk_mask(scores[name], s)          # 1=keep
-            Wc = _sequential_zero(W.clone(), self._U[name], mask, self.blocksize)
+            if self.mask_mode == "dynamic":
+                Wc = _sequential_zero_dynamic(W, U, s, self.blocksize)
+            else:
+                Hdiag = Hinv.diagonal().clamp(min=1e-12)
+                score = (W.to(torch.float64) * W.to(torch.float64) / Hdiag.unsqueeze(0)).to(torch.float32)
+                mask = per_row_topk_mask(score, s)          # 1=keep
+                Wc = _sequential_zero(W, U, mask, self.blocksize)
             m.weight.data.copy_(Wc.to(m.weight.data.dtype))
+            del Hinv, U, Wc
             sp = (m.weight.data == 0).float().mean().item()
             pruned += int((m.weight.data == 0).sum().item())
             total += m.weight.data.numel()
             layer_reports.append({"layer": name, "sparsity": round(sp, 4)})
+        del H_dict
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
 
         result = PruneResult(
             method=self.method_name,
@@ -104,26 +154,25 @@ class OBCPruner(BasePruner):
                     result.overall_sparsity * 100, result.duration_s)
         return result
 
-    def prepare(self, calib_batches, max_batches: int = 32):
-        """分离出 Hessian 准备步骤（score_only 与 run 共用；SGMix 用）。"""
-        H_dict = collect_xtx(self.model, self.linears, calib_batches, max_batches)
-        scores = self._scores_from_hessian(H_dict)
-        self._U = {}
-        for name, _ in self.linears:
-            Hinv = damp_inverse(H_dict[name], self.percdamp)
-            self._U[name] = torch.linalg.cholesky(Hinv, upper=True).to(torch.float32)
-        return scores
-
     def score_dry(self, calib_batches, max_batches: int = 32) -> dict:
         """不落刀的敏感度评分：每层 OBS 理论删除损失 = 被删项 score 之和。
 
         返回 {layer_name: estimated_loss}（SGMix 的敏感度输入）。
+        逐层处理、用完释放（3B 级模型的显存安全）。
         """
         assert calib_batches is not None
-        scores = self.prepare(calib_batches, max_batches)
+        H_dict = self.prepare(calib_batches, max_batches)
         sens = {}
-        for name, _ in self.linears:
+        for name, m in self.linears:
             s = layer_sparsity_target(self.config.sparsity, name)
-            mask = per_row_topk_mask(scores[name], s)
-            sens[name] = float((scores[name] * (1 - mask)).sum().item())
+            Hinv = damp_inverse(H_dict.pop(name), self.percdamp)
+            Hdiag = Hinv.diagonal().clamp(min=1e-12).to(torch.float32)
+            w = m.weight.data.detach().to(torch.float32)
+            score = w * w / Hdiag.unsqueeze(0)
+            mask = per_row_topk_mask(score, s)
+            sens[name] = float((score * (1 - mask)).sum().item())
+            del Hinv, score, mask
+        del H_dict
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
         return sens

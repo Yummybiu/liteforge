@@ -113,7 +113,6 @@ def cmd_prune(args):
         pruner = OBCPruner(model, PruneConfig(sparsity=args.sparsity),
                            percdamp=args.percdamp)
         sens = pruner.score_dry(calib, max_batches=args.calib_size)
-        from .utils import save_json
         save_json(sens, args.dry_score)
         logger.info("敏感度已写入 %s（%d 层）", args.dry_score, len(sens))
         return None
@@ -122,7 +121,8 @@ def cmd_prune(args):
         from .prune import OBCPruner
         from .prune.base import PruneConfig
         cfg = PruneConfig(sparsity=sparsity, structure=args.structure)
-        pruner = OBCPruner(model, cfg, percdamp=args.percdamp)
+        pruner = OBCPruner(model, cfg, percdamp=args.percdamp,
+                           mask_mode=args.obc_mask)
         result = pruner.run(calib_batches=calib, max_batches=args.calib_size)
     else:
         pruner_cls = WandaPruner if args.method == "wanda" else MagnitudePruner
@@ -263,6 +263,9 @@ def main(argv=None):
                     help="JSON：逐层稀疏度（SGMix 流程产物）")
     sp.add_argument("--percdamp", type=float, default=0.01,
                     help="OBC/GPTQ 的 Hessian 阻尼比例")
+    sp.add_argument("--obc-mask", default="dynamic",
+                    choices=["dynamic", "static"],
+                    help="dynamic=SparseGPT 块级重评分（忠实版）；static=静态预选（消融）")
     sp.add_argument("--dry-score", default=None,
                     help="只计算 OBS 敏感度并写入该 JSON，不剪枝")
     sp.add_argument("--calib-dataset", default="wikitext2:train")

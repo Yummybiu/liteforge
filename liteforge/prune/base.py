@@ -166,7 +166,7 @@ class BasePruner:
             if self.config.structure == "2:4":
                 mask = group_2to4_mask(score)
             else:
-                mask = per_row_topk_mask(score, self.config.sparsity)
+                mask = per_row_topk_mask(score, s)
             m.weight.data.mul_(mask.to(w.dtype))
             sp = (w == 0).float().mean().item()
             pruned_elems += int((w == 0).sum().item())

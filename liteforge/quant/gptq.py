@@ -81,8 +81,9 @@ class GPTQQuantizer:
         for name, m in self.linears:
             self._backup[name] = m.weight.data.detach().clone()
             W = m.weight.data.to(torch.float32)
-            Hinv = damp_inverse(H_dict[name], self.percdamp)
+            Hinv = damp_inverse(H_dict.pop(name), self.percdamp)
             U = torch.linalg.cholesky(Hinv, upper=True).to(torch.float32)
+            del Hinv
             Wq = _gptq_layer(W, U, self.config.bits, self.config.group_size,
                              self.config.symmetric, self.blocksize)
             err = (Wq - W).abs().mean().item()
