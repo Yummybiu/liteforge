@@ -132,6 +132,8 @@ def cmd_prune(args):
         result = pruner.run(calib_batches=calib, max_batches=args.calib_size)
     params.update({"layer_reports_n": len(result.layer_reports),
                    "overall_sparsity": result.overall_sparsity})
+    if args.method == "obc":
+        params["obc_mask"] = args.obc_mask
 
     metrics = {}
     if args.eval:
