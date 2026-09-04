@@ -16,7 +16,7 @@ def effective_bits(rec: dict) -> float | None:
         return 16.0
     if method in ("rtn", "gptq", "awq") and params.get("bits"):
         return float(params["bits"])
-    if method in ("wanda", "magnitude") and params.get("sparsity") is not None:
+    if method in ("wanda", "magnitude", "obc") and params.get("sparsity") is not None:
         return 16.0 * (1.0 - float(params["sparsity"]))
     return None
 

@@ -1,5 +1,10 @@
 # LiteForge
 
+[![tests](https://github.com/Yummybiu/liteforge/actions/workflows/tests.yml/badge.svg)](https://github.com/Yummybiu/liteforge/actions/workflows/tests.yml)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![GPU](https://img.shields.io/badge/verified-RTX%20A5000%20%7C%20Qwen2.5--0.5B%2F1.5B%2F3B-orange)
+
 **LLM 压缩-评测-部署一站式工具箱：剪枝 / 量化 / 困惑度评测 / 部署基准，附带完整真实实验数据。**
 
 它回答一个具体的问题：*把一个开源 LLM 压下去，质量掉多少？部署能快多少？*
