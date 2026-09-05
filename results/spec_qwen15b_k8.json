@@ -1,0 +1,25 @@
+{
+  "task": "spec-bench",
+  "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B",
+  "method": "speculative",
+  "params": {
+    "draft": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B",
+    "k": 8,
+    "max_new": 256,
+    "prompt_words": 5
+  },
+  "metrics": {
+    "exact_vs_greedy": true,
+    "acceptance_rate": 0.7986,
+    "tokens_per_target_forward": 7.314,
+    "speedup_wall": 0.97,
+    "baseline_wall_s": 19.968,
+    "spec_wall_s": 20.69
+  },
+  "env": {
+    "torch": "2.14.0+cu126",
+    "cuda_available": true,
+    "device_name": "NVIDIA RTX A5000",
+    "timestamp": "2026-09-06 00:06:21"
+  }
+}

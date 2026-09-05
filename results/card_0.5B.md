@@ -1,6 +1,6 @@
 # LiteForge 压缩报告卡 — 0.5B
 
-> 自动生成于 16 条实验记录；全部数字可由仓库脚本一键复现。口径：剪枝/伪量化为方法学质量（稠密推理），部署速度单独由 vLLM 实测。
+> 自动生成于 18 条实验记录；全部数字可由仓库脚本一键复现。口径：剪枝/伪量化为方法学质量（稠密推理），部署速度单独由 vLLM 实测。
 
 ## 一、压缩-质量对照（WikiText-2 PPL）
 
@@ -22,4 +22,119 @@
 | wanda-sgmix | - | 29.53 |
 | wanda-sgmix | - | 34.97 |
 | obc | 0.5/unstructured | 17.52 |
+
+## 三、SmoothQuant W8A8 α 扫描
+
+```json
+{
+ "task": "smooth-alpha",
+ "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B",
+ "method": "smoothquant",
+ "params": {
+  "alphas": [
+   0.4,
+   0.5,
+   0.6,
+   0.7,
+   0.8
+  ],
+  "calib_size": 8
+ },
+ "metrics": {
+  "total_no_smooth": 23858744.322993964,
+  "total_by_alpha": {
+   "0.4": 11487921.32736659,
+   "0.5": 8471586.017186224,
+   "0.6": 6922536.552536875,
+   "0.7": 6537716.478294373,
+   "0.8": 7378890.340036809
+  },
+  "best_alpha": 0.7,
+  "improvement_ratio": 3.65
+ },
+ "env": {
+  "torch": "2.14.0+cu126",
+  "cuda_available": true,
+  "device_name": "NVIDIA RTX A5000",
+  "timestamp": "2026-09-05 23:54:29"
+ },
+ "per_layer": {
+  "model.layers.0.self_attn.q_proj": {
+   "by_alpha": {
+    "0.4": 3038.1517639160156,
+    "0.5": 2447.3234252929688,
+    "0.6": 2896.5906982421875,
+    "0.7": 4019.108856201172,
+    "0.8": 7716.232238769531
+   },
+   "no_smooth": 5714.3328857421875,
+   "best_alpha": 0.5
+  },
+  "model.layers.0.self_attn.k_proj": {
+   "by_alpha": {
+    "0.4": 493.15329360961914,
+    "0.5": 381.61231994628906,
+    "0.6": 342.25257873535156,
+    "0.7": 463.09156036376953,
+    "0.8": 777.972785949707
+   },
+   "no_smooth": 1165.6306915283203,
+   "best_alpha": 0.6
+  },
+  "model.layers.0.self_attn.v_proj": {
+   "by_alpha": {
+    "0.4": 4.015387713909149,
+    "0.5": 3.1193143129348755,
+    "0.6": 3.1976747512817383,
+    "0.7": 3.225851595401764,
+    "0.8": 4.034596741199493
+   },
+   "no_smooth": 23.33472180366516,
+   "best_alpha": 0.5
+  },
+  "model.layers.0.self_att
+```
+
+## 五、MMLU-mini 下游
+
+```json
+{
+ "task": "eval-mmlu",
+ "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B",
+ "method": "dense",
+ "params": {
+  "n": 500
+ },
+ "metrics": {
+  "task": "eval-mmlu",
+  "n": 500,
+  "accuracy": 0.476,
+  "by_bucket": {
+   "humanities": {
+    "acc": 0.4505,
+    "n": 182
+   },
+   "other": {
+    "acc": 0.5059,
+    "n": 85
+   },
+   "social": {
+    "acc": 0.5688,
+    "n": 109
+   },
+   "stem": {
+    "acc": 0.4113,
+    "n": 124
+   }
+  },
+  "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B"
+ },
+ "env": {
+  "torch": "2.14.0+cu126",
+  "cuda_available": true,
+  "device_name": "NVIDIA RTX A5000",
+  "timestamp": "2026-09-05 23:55:30"
+ }
+}
+```
 

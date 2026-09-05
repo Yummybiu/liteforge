@@ -4,3 +4,132 @@
 23:51:43 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
 [transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
 23:52:02 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+23:54:29 | INFO    | [smooth] α 扫描完成（168 层 × 6 配置），耗时 147.0s
+23:54:29 | INFO    | W8A8 α 扫描：best α=0.7，无平滑/最优 = 3.65× → results/smooth_qwen0.5B.json
+=== 0.5B MMLU-mini（dense 基线）===
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3533.76it/s]
+23:54:48 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+23:54:52 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+Generating test split: 0 examples [00:00, ? examples/s]Generating test split: 1000 examples [00:00, 1878.25 examples/s]Generating test split: 14042 examples [00:00, 25454.79 examples/s]
+23:54:58 | INFO    | [mmlu] 50/500 running acc=0.420
+23:55:02 | INFO    | [mmlu] 100/500 running acc=0.480
+23:55:05 | INFO    | [mmlu] 150/500 running acc=0.500
+23:55:09 | INFO    | [mmlu] 200/500 running acc=0.470
+23:55:12 | INFO    | [mmlu] 250/500 running acc=0.464
+23:55:16 | INFO    | [mmlu] 300/500 running acc=0.457
+23:55:19 | INFO    | [mmlu] 350/500 running acc=0.460
+23:55:23 | INFO    | [mmlu] 400/500 running acc=0.458
+23:55:27 | INFO    | [mmlu] 450/500 running acc=0.469
+23:55:30 | INFO    | [mmlu] 500/500 running acc=0.476
+23:55:30 | INFO    | MMLU-mini: acc=0.476 {'humanities': {'acc': 0.4505, 'n': 182}, 'other': {'acc': 0.5059, 'n': 85}, 'social': {'acc': 0.5688, 'n': 109}, 'stem': {'acc': 0.4113, 'n': 124}} → results/mmlu_qwen0.5B_dense.json
+=== 1.5B SmoothQuant W8A8 α 扫描 ===
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   5%|▍         | 16/338 [00:00<00:02, 149.49it/s]Loading weights:  10%|█         | 34/338 [00:00<00:01, 162.64it/s]Loading weights:  17%|█▋        | 57/338 [00:00<00:01, 170.81it/s]Loading weights:  22%|██▏       | 75/338 [00:00<00:01, 168.71it/s]Loading weights:  27%|██▋       | 92/338 [00:00<00:01, 152.89it/s]Loading weights:  33%|███▎      | 111/338 [00:00<00:01, 163.84it/s]Loading weights:  38%|███▊      | 128/338 [00:00<00:01, 161.32it/s]Loading weights:  43%|████▎     | 145/338 [00:00<00:01, 161.53it/s]Loading weights:  48%|████▊     | 163/338 [00:00<00:01, 165.28it/s]Loading weights: 100%|██████████| 338/338 [00:01<00:00, 312.80it/s]
+23:56:10 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B 加载完成：1544M params @ cuda:0, dtype=torch.bfloat16
+23:56:13 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+23:56:32 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+00:02:24 | INFO    | [smooth] α 扫描完成（196 层 × 6 配置），耗时 351.5s
+00:02:24 | INFO    | W8A8 α 扫描：best α=0.7，无平滑/最优 = 3.98× → results/smooth_qwen1.5B.json
+=== 1.5B MMLU-mini（dense 基线）===
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 10822.69it/s]
+00:03:06 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B 加载完成：1544M params @ cuda:0, dtype=torch.bfloat16
+00:03:10 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+00:03:16 | INFO    | [mmlu] 50/500 running acc=0.560
+00:03:20 | INFO    | [mmlu] 100/500 running acc=0.510
+00:03:24 | INFO    | [mmlu] 150/500 running acc=0.527
+00:03:29 | INFO    | [mmlu] 200/500 running acc=0.540
+00:03:33 | INFO    | [mmlu] 250/500 running acc=0.548
+00:03:38 | INFO    | [mmlu] 300/500 running acc=0.547
+00:03:43 | INFO    | [mmlu] 350/500 running acc=0.551
+00:03:47 | INFO    | [mmlu] 400/500 running acc=0.562
+00:03:51 | INFO    | [mmlu] 450/500 running acc=0.567
+00:03:55 | INFO    | [mmlu] 500/500 running acc=0.572
+00:03:55 | INFO    | MMLU-mini: acc=0.572 {'humanities': {'acc': 0.522, 'n': 182}, 'other': {'acc': 0.5647, 'n': 85}, 'social': {'acc': 0.7156, 'n': 109}, 'stem': {'acc': 0.5242, 'n': 124}} → results/mmlu_qwen1.5B_dense.json
+=== 投机解码：target=1.5B draft=0.5B ===
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 3655.84it/s]
+00:04:17 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B 加载完成：1544M params @ cuda:0, dtype=torch.bfloat16
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3068.45it/s]
+00:04:19 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+00:05:14 | INFO    | 投机解码：exact=False α=0.893 tok/target-fwd=4.57 加速=1.41× → results/spec_qwen15b_k4.json
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 3706.16it/s]
+00:05:38 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B 加载完成：1544M params @ cuda:0, dtype=torch.bfloat16
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3143.26it/s]
+00:05:40 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+00:06:21 | INFO    | 投机解码：exact=True α=0.799 tok/target-fwd=7.31 加速=0.97× → results/spec_qwen15b_k8.json
+=== 报告卡 ===
+00:06:29 | INFO    | 
+# LiteForge 压缩报告卡 — 0.5B
+
+> 自动生成于 18 条实验记录；全部数字可由仓库脚本一键复现。口径：剪枝/伪量化为方法学质量（稠密推理），部署速度单独由 vLLM 实测。
+
+## 一、压缩-质量对照（WikiText-2 PPL）
+
+| 方法 | 设置 | PPL ↓ |
+|---|---|---|
+| dense | - | 13.21 |
+| wanda | 0.5/unstructured | 25.52 |
+| magnitude | 0.5/unstructured | 485.58 |
+| rtn | W4/g128 | 15.69 |
+| rtn | W8/g128 | 13.22 |
+| wanda | 0.25/unstructured | 13.72 |
+| wanda | 0.6/unstructured | 76.71 |
+| wanda | 0.5/2:4 | 70.14 |
+| rtn | W3/g128 | 51.37 |
+| rtn | W4/g0 | 23.99 |
+| gptq | W4/g128 | 14.13 |
+| obc | 0.5/unstructured | 54.16 |
+| gptq | W4/g128 | 14.13 |
+| wanda-sgmix | - | 29.53 |
+| wanda-sgmix | - | 34.97 |
+| obc | 0.5/unstructured | 17.52 |
+
+## 三、SmoothQuant W8A8 α 扫描
+
+```json
+{
+ "task": "smooth-alpha",
+ "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B",
+ "method": "smoothquan
+00:06:35 | INFO    | 
+# LiteForge 压缩报告卡 — 1.5B
+
+> 自动生成于 10 条实验记录；全部数字可由仓库脚本一键复现。口径：剪枝/伪量化为方法学质量（稠密推理），部署速度单独由 vLLM 实测。
+
+## 一、压缩-质量对照（WikiText-2 PPL）
+
+| 方法 | 设置 | PPL ↓ |
+|---|---|---|
+| dense | - | 9.26 |
+| wanda | 0.5/unstructured | 13.34 |
+| rtn | W4/g128 | 10.37 |
+| obc | 0.5/unstructured | 13.73 |
+| gptq | W4/g128 | 9.91 |
+| obc | 0.5/unstructured | 11.67 |
+
+## 三、SmoothQuant W8A8 α 扫描
+
+```json
+{
+ "task": "smooth-alpha",
+ "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B",
+ "method": "smoothquant",
+ "params": {
+  "alphas": [
+   0.4,
+   0.5,
+   0.6,
+   0.7,
+   0.8
+  ],
+  "calib_size": 8
+ },
+ "metrics": {
+  "total_no_smooth": 122958292.99746704,
+  "total_by_alpha": {
+   "0.4": 67997515.35647583,
+   "0.5": 44408300.517082214,
+   "0.6": 33287061.702568054,
+   "0.7": 30910115.030044556,
+   "0.8": 365
+DONE. 验收：smooth 的 improvement_ratio>1；spec 的 exact=true 且 speedup>1；
+      mmlu acc 与 dense 基线合理；card_*.md 为面试展示文件。

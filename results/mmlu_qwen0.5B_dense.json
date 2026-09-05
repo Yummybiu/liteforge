@@ -1,0 +1,38 @@
+{
+  "task": "eval-mmlu",
+  "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B",
+  "method": "dense",
+  "params": {
+    "n": 500
+  },
+  "metrics": {
+    "task": "eval-mmlu",
+    "n": 500,
+    "accuracy": 0.476,
+    "by_bucket": {
+      "humanities": {
+        "acc": 0.4505,
+        "n": 182
+      },
+      "other": {
+        "acc": 0.5059,
+        "n": 85
+      },
+      "social": {
+        "acc": 0.5688,
+        "n": 109
+      },
+      "stem": {
+        "acc": 0.4113,
+        "n": 124
+      }
+    },
+    "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B"
+  },
+  "env": {
+    "torch": "2.14.0+cu126",
+    "cuda_available": true,
+    "device_name": "NVIDIA RTX A5000",
+    "timestamp": "2026-09-05 23:55:30"
+  }
+}
