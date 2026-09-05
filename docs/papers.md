@@ -9,6 +9,8 @@
 | 工作 | 做了什么 | 与本项目的关系 |
 |---|---|---|
 | [Kuzmin et al., NeurIPS 2023](https://proceedings.neurips.cc/paper_files/paper/2023/file/c48bc80aa5d3cbbdd712d1cc107b8319-Paper-Conference.pdf)《Pruning vs Quantization》 | 在固定预算下正面比较剪枝与量化（208+ 引用） | 我们复现其核心结论之一（同比特下量化保真度更高），并把比较做成**开源测量框架** |
+| [SmoothQuant (mit-han-lab, arXiv:2211.10438)](https://github.com/mit-han-lab/smoothquant) | W8A8 激活量化：等价变换把离群从激活迁移进权重，α 平衡两侧难度 | 本仓库从零实现 + α 网格搜索（蒙特卡洛损失口径），W8A8 补齐 weight-only 之外的技术纵深 |
+| [Speculative Decoding (Leviathan et al., ICML 2023)](https://arxiv.org/abs/2211.17192) | draft-target 投机解码，贪心验证输出分布不变 | 从零实现并以单测证明精确性定理；对齐 JD"解码加速/投机解码"关键词 |
 | [Revisiting Pruning vs Quantization for SLMs](https://casszhao.github.io/cass/QP.pdf) | 逐层 SNR 视角比较两者；发现量化逐层保真度始终更高 | 直接可复现假设：损失表应在逐层粒度验证同一结论 |
 | HAWQ 系列（ICML'19 等） | Hessian 迹敏感度 → 混合精度**量化**位宽分配 | 分配思想的鼻祖，但只覆盖量化菜单；我们扩展到"量化∪剪枝"统一菜单 |
 | [BESA (arXiv 2402.16880)](https://arxiv.org/html/2402.16880v2) | 块级重建损失驱动的**非均匀稀疏度**分配 | 剪枝侧的非均匀分配先例；我们的菜单含量化选项，损失度量跨方法族 |

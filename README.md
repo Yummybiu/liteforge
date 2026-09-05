@@ -11,11 +11,20 @@
 > （`L = tr(ΔW·H·ΔWᵀ)`），逐层菜单化后用**精确 DP** 在任意平均比特预算下求最优
 > "剪/量化/保留"组合，与贪心/均匀策略消融对照。设计文档：
 > [docs/V2_PLAN.md](docs/V2_PLAN.md) · 相关工作定位：[docs/papers.md](docs/papers.md)
+> · 总架构与 JD 覆盖矩阵：[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+>
+> **V2.1 加厚**：**SmoothQuant W8A8**（从零：等价变换 + α 网格搜索，蒙特卡洛损失口径）、
+> **投机解码**（从零：draft-target 贪心验证，单测证明输出与 target 逐步一致的精确性定理）、
+> **MMLU-mini 似然评测**（lm-eval 口径）与**压缩报告卡**（一文件展示全部证据）。
 >
 > ```bash
 > python -m liteforge.cli loss-report --model <model> --chunk 6     # 逐层损失菜单
 > python -m liteforge.cli allocate --losses losses.json --target-bits 2.5 --strategy dp --plot
 > python -m liteforge.cli apply-alloc --model <model> --alloc alloc.json --eval   # 预测vs实际闭环
+> python -m liteforge.cli smooth-alpha --model <model>              # W8A8 α 扫描
+> python -m liteforge.cli spec-bench --model <大> --draft <小> --k 4  # 投机解码
+> python -m liteforge.cli eval-mmlu --model <model> --n 500         # 下游评测
+> python -m liteforge.cli report-card --model-key 0.5B              # 一文件报告卡
 > ```
 
 它回答一个具体的问题：*把一个开源 LLM 压下去，质量掉多少？部署能快多少？*

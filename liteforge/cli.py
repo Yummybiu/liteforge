@@ -349,6 +349,93 @@ def cmd_apply_alloc(args):
     return rec
 
 
+# ---------------------------------------------------------------- V2.1 commands
+def cmd_smooth_alpha(args):
+    from .smooth import w8a8_alpha_sweep
+    from .data.text import BlockBatcher, load_eval_text
+    from .utils import find_linears
+
+    model, tokenizer = load_pair(args)
+    linears = find_linears(model, exclude=("lm_head", "embed_out"))
+    calib = BlockBatcher(tokenizer, load_eval_text(args.calib_dataset),
+                         block_size=args.seqlen, batch_size=args.batch_size)
+    sweep = w8a8_alpha_sweep(model, linears, calib,
+                             alphas=tuple(args.alphas),
+                             max_batches=args.calib_size)
+    # 聚合：整体最优 α 与"无平滑 vs 最优"的总体比值
+    tot = {"no_smooth": 0.0}
+    by_alpha = {a: 0.0 for a in args.alphas}
+    for name, s in sweep.items():
+        tot["no_smooth"] += s["no_smooth"]
+        for a, v in s["by_alpha"].items():
+            by_alpha[a] += v
+    best_a = min(by_alpha, key=by_alpha.get)
+    rec = build_record("smooth-alpha", args.model, "smoothquant",
+                       {"alphas": list(args.alphas), "calib_size": args.calib_size},
+                       {"total_no_smooth": tot["no_smooth"],
+                        "total_by_alpha": by_alpha,
+                        "best_alpha": best_a,
+                        "improvement_ratio": round(tot["no_smooth"] / max(by_alpha[best_a], 1e-9), 2)})
+    rec["per_layer"] = sweep
+    path = save_json(rec, args.out or default_out("smooth_alpha"))
+    logger.info("W8A8 α 扫描：best α=%s，无平滑/最优 = %.2f× → %s",
+                best_a, rec["metrics"]["improvement_ratio"], path)
+    return rec
+
+
+def cmd_spec_bench(args):
+    import torch
+
+    from .speculative import greedy_generate_baseline, speculative_generate
+
+    from .models import load_model_and_tokenizer
+    target, tok = load_model_and_tokenizer(args.model, args.device, args.dtype)
+    draft, _ = load_model_and_tokenizer(args.draft, args.device, args.dtype)
+    ids = tok(args.prompt, return_tensors="pt")["input_ids"].to(next(target.parameters()).device)
+    eos = tok.eos_token_id
+
+    ref = greedy_generate_baseline(target, ids, args.max_new, eos_id=eos)
+    out = speculative_generate(target, draft, ids, args.max_new,
+                               k=args.k, eos_id=eos)
+    exact = bool(torch.equal(out["ids"], ref["ids"]))
+    speedup = ref["stats"]["wall_s"] / max(out["stats"]["wall_s"], 1e-9)
+    rec = build_record("spec-bench", args.model, "speculative",
+                       {"draft": args.draft, "k": args.k,
+                        "max_new": args.max_new, "prompt_words": len(args.prompt.split())},
+                       {"exact_vs_greedy": exact,
+                        "acceptance_rate": out["stats"]["acceptance_rate"],
+                        "tokens_per_target_forward": out["stats"]["tokens_per_target_forward"],
+                        "speedup_wall": round(speedup, 2),
+                        "baseline_wall_s": ref["stats"]["wall_s"],
+                        "spec_wall_s": out["stats"]["wall_s"]})
+    path = save_json(rec, args.out or default_out("spec"))
+    logger.info("投机解码：exact=%s α=%.3f tok/target-fwd=%.2f 加速=%.2f× → %s",
+                exact, rec["metrics"]["acceptance_rate"],
+                rec["metrics"]["tokens_per_target_forward"], speedup, path)
+    return rec
+
+
+def cmd_eval_mmlu(args):
+    from .eval.mmlu import evaluate_mmlu
+
+    model, tokenizer = load_pair(args)
+    stats = evaluate_mmlu(model, tokenizer, n=args.n)
+    stats["model"] = args.model
+    rec = build_record("eval-mmlu", args.model, "dense",
+                       {"n": args.n}, stats)
+    path = save_json(rec, args.out or default_out("mmlu"))
+    logger.info("MMLU-mini: acc=%.3f %s → %s", stats["accuracy"],
+                stats["by_bucket"], path)
+    return rec
+
+
+def cmd_report_card(args):
+    from .report.card import build_report_card
+    text = build_report_card(args.model_key, args.results_dir, args.out)
+    logger.info("\n%s", text[:800])
+    return text
+
+
 # ---------------------------------------------------------------- parser
 def main(argv=None):
     setup_logging()
@@ -464,6 +551,39 @@ def main(argv=None):
     sp.add_argument("--percdamp", type=float, default=0.01)
     sp.add_argument("--out", default=None)
     sp.set_defaults(fn=cmd_apply_alloc)
+
+    sp = sub.add_parser("smooth-alpha", help="V2.1: SmoothQuant W8A8 α 网格搜索")
+    add_model_args(sp)
+    sp.add_argument("--calib-dataset", default="wikitext2:train")
+    sp.add_argument("--seqlen", type=int, default=2048)
+    sp.add_argument("--batch-size", type=int, default=8)
+    sp.add_argument("--calib-size", type=int, default=8)
+    sp.add_argument("--alphas", type=float, nargs="*",
+                    default=[0.4, 0.5, 0.6, 0.7, 0.8])
+    sp.add_argument("--out", default=None)
+    sp.set_defaults(fn=cmd_smooth_alpha)
+
+    sp = sub.add_parser("spec-bench", help="V2.1: 投机解码基准（精确性+加速）")
+    sp.add_argument("--model", required=True, help="target 模型")
+    sp.add_argument("--draft", required=True, help="draft 模型")
+    sp.add_argument("--device", default="auto"); sp.add_argument("--dtype", default="auto")
+    sp.add_argument("--prompt", default="The meaning of life is")
+    sp.add_argument("--k", type=int, default=4)
+    sp.add_argument("--max-new", type=int, default=128)
+    sp.add_argument("--out", default=None)
+    sp.set_defaults(fn=cmd_spec_bench)
+
+    sp = sub.add_parser("eval-mmlu", help="V2.1: MMLU-mini 似然评测")
+    add_model_args(sp)
+    sp.add_argument("--n", type=int, default=500)
+    sp.add_argument("--out", default=None)
+    sp.set_defaults(fn=cmd_eval_mmlu)
+
+    sp = sub.add_parser("report-card", help="V2.1: 生成压缩报告卡（Markdown）")
+    sp.add_argument("--model-key", required=True, help="模型名子串，如 0.5B")
+    sp.add_argument("--results-dir", default="results")
+    sp.add_argument("--out", default=None)
+    sp.set_defaults(fn=cmd_report_card)
 
     args = p.parse_args(argv)
     seed_everything(args.seed if hasattr(args, "seed") else 42)
