@@ -1,0 +1,26 @@
+{
+  "task": "apply-alloc",
+  "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B",
+  "method": "mixed",
+  "params": {
+    "alloc_file": "results/alloc_qwen0.5B_t2.25_unifw4.json",
+    "strategy": null,
+    "target_bits": 2.25,
+    "predicted_total_loss": 484261390.3059833,
+    "n_applied": 168,
+    "n_fp16": 0
+  },
+  "metrics": {
+    "ppl": 14.1639,
+    "nll": 2.6507,
+    "n_tokens": 65504,
+    "n_blocks": 32,
+    "block_size": 2048
+  },
+  "env": {
+    "torch": "2.14.0+cu126",
+    "cuda_available": true,
+    "device_name": "NVIDIA RTX A5000",
+    "timestamp": "2026-09-06 01:43:41"
+  }
+}

@@ -1,0 +1,80 @@
+=== 0.5B apply dp t=2.75 ===
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3476.49it/s]
+01:02:15 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+01:02:18 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+01:02:37 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+01:08:42 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+01:08:44 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+01:09:03 | INFO    | 已应用 168 层（fp16 保留 0），PPL=651.5651（预测损失 3.103e+09）→ results/apply_qwen0.5B_t2.75_dp.json
+=== 0.5B apply unifw4 t=2.75 ===
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3338.50it/s]
+01:09:29 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+01:09:31 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+01:09:50 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+01:15:35 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+01:15:36 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+01:15:52 | INFO    | 已应用 168 层（fp16 保留 0），PPL=14.1639（预测损失 4.843e+08）→ results/apply_qwen0.5B_t2.75_unifw4.json
+=== 0.5B allocate dp t=2.5 ===
+01:16:02 | INFO    | 分配完成：目标 2.50 bit，实际 2.500 bit，预测总损失 5.287e+09
+分布：{'w2g128': 100, 'w3g128': 68}
+→ results/alloc_qwen0.5B_t2.5_dp.json
+01:16:06 | INFO    | 分配地图：results/alloc_qwen0.5B_t2.5_dp_map.png
+=== 0.5B allocate greedy t=2.5 ===
+01:16:11 | INFO    | 分配完成：目标 2.50 bit，实际 2.500 bit，预测总损失 5.328e+09
+分布：{'w2g128': 86, 'w3g128': 77, 'w4g128': 5}
+→ results/alloc_qwen0.5B_t2.5_greedy.json
+01:16:16 | INFO    | 分配完成：目标 2.50 bit，实际 -1.000 bit，预测总损失 4.843e+08
+分布：{'w4g128': 168}
+→ results/alloc_qwen0.5B_t2.5_unifw4.json
+=== 0.5B apply dp t=2.5 ===
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3440.71it/s]
+01:16:37 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+01:16:40 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+01:16:58 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+01:22:42 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+01:22:44 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+01:23:00 | INFO    | 已应用 168 层（fp16 保留 0），PPL=13934.1156（预测损失 5.287e+09）→ results/apply_qwen0.5B_t2.5_dp.json
+=== 0.5B apply unifw4 t=2.5 ===
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3230.78it/s]
+01:23:29 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+01:23:31 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+01:23:50 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+01:29:34 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+01:29:36 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+01:29:51 | INFO    | 已应用 168 层（fp16 保留 0），PPL=14.1639（预测损失 4.843e+08）→ results/apply_qwen0.5B_t2.5_unifw4.json
+=== 0.5B allocate dp t=2.25 ===
+01:30:02 | INFO    | 分配完成：目标 2.25 bit，实际 2.250 bit，预测总损失 1.058e+10
+分布：{'w2g128': 168}
+→ results/alloc_qwen0.5B_t2.25_dp.json
+01:30:06 | INFO    | 分配地图：results/alloc_qwen0.5B_t2.25_dp_map.png
+=== 0.5B allocate greedy t=2.25 ===
+01:30:11 | INFO    | 分配完成：目标 2.25 bit，实际 2.250 bit，预测总损失 1.058e+10
+分布：{'w2g128': 168}
+→ results/alloc_qwen0.5B_t2.25_greedy.json
+01:30:16 | INFO    | 分配完成：目标 2.25 bit，实际 -1.000 bit，预测总损失 4.843e+08
+分布：{'w4g128': 168}
+→ results/alloc_qwen0.5B_t2.25_unifw4.json
+=== 0.5B apply dp t=2.25 ===
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3366.57it/s]
+01:30:37 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+01:30:39 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+01:30:58 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+01:36:39 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+01:36:41 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+01:36:57 | INFO    | 已应用 168 层（fp16 保留 0），PPL=195903.5556（预测损失 1.058e+10）→ results/apply_qwen0.5B_t2.25_dp.json
+=== 0.5B apply unifw4 t=2.25 ===
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3409.63it/s]
+01:37:23 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+01:37:25 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+01:37:43 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+01:43:23 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+01:43:25 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+01:43:41 | INFO    | 已应用 168 层（fp16 保留 0），PPL=14.1639（预测损失 4.843e+08）→ results/apply_qwen0.5B_t2.25_unifw4.json
+=== 1.5B 损失表 ===
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   7%|▋         | 25/338 [00:00<00:01, 244.92it/s]Loading weights:  15%|█▍        | 50/338 [00:00<00:01, 181.18it/s]Loading weights:  21%|██        | 70/338 [00:00<00:01, 180.31it/s]Loading weights:  26%|██▋       | 89/338 [00:00<00:01, 166.67it/s]Loading weights:  32%|███▏      | 109/338 [00:00<00:01, 175.62it/s]Loading weights:  38%|███▊      | 127/338 [00:00<00:01, 169.46it/s]Loading weights:  43%|████▎     | 145/338 [00:00<00:01, 155.90it/s]Loading weights:  52%|█████▏    | 175/338 [00:00<00:00, 187.84it/s]Loading weights:  58%|█████▊    | 196/338 [00:01<00:00, 171.86it/s]Loading weights: 100%|██████████| 338/338 [00:01<00:00, 284.15it/s]
