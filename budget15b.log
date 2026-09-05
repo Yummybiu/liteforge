@@ -1,0 +1,6 @@
+=== 0.5B 1/3 损失表 ===
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3866.69it/s]
+00:13:09 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+00:13:12 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+00:13:29 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
