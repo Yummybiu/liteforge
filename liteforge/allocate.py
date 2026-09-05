@@ -183,7 +183,7 @@ def apply_allocation(model, alloc: dict, calib_batches, max_batches: int = 16,
     """
     from .lossmeter import DEFAULT_MENU, _chunk_linears, prune_copy, quantize_copy
     from .utils import find_linears
-    from .utils.hessian import damp_inverse
+    from .utils.hessian import collect_xtx, damp_inverse
 
     menu_by_name = {m["name"]: m for m in DEFAULT_MENU}
     linears = dict(find_linears(model, exclude=("lm_head", "embed_out")))
@@ -212,7 +212,3 @@ def apply_allocation(model, alloc: dict, calib_batches, max_batches: int = 16,
             del H, U
     skipped = len(alloc) - len(applied)
     return {"applied": applied, "skipped_fp16": skipped}
-
-
-def _collect_for(model, named_linears, calib_batches, max_batches):
-    return collect_xtx(model, named_linears, calib_batches, max_batches)

@@ -4,3 +4,65 @@
 00:13:12 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
 [transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
 00:13:29 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+00:16:00 | INFO    | [lossmeter] chunk 0 完成（6/168 层）
+00:16:53 | INFO    | [lossmeter] chunk 1 完成（12/168 层）
+00:17:44 | INFO    | [lossmeter] chunk 2 完成（18/168 层）
+00:18:35 | INFO    | [lossmeter] chunk 3 完成（24/168 层）
+00:19:25 | INFO    | [lossmeter] chunk 4 完成（30/168 层）
+00:20:16 | INFO    | [lossmeter] chunk 5 完成（36/168 层）
+00:21:14 | INFO    | [lossmeter] chunk 6 完成（42/168 层）
+00:21:46 | INFO    | [lossmeter] chunk 7 完成（48/168 层）
+00:22:36 | INFO    | [lossmeter] chunk 8 完成（54/168 层）
+00:23:27 | INFO    | [lossmeter] chunk 9 完成（60/168 层）
+00:24:17 | INFO    | [lossmeter] chunk 10 完成（66/168 层）
+00:25:09 | INFO    | [lossmeter] chunk 11 完成（72/168 层）
+00:26:15 | INFO    | [lossmeter] chunk 12 完成（78/168 层）
+00:27:14 | INFO    | [lossmeter] chunk 13 完成（84/168 层）
+00:27:50 | INFO    | [lossmeter] chunk 14 完成（90/168 层）
+00:28:48 | INFO    | [lossmeter] chunk 15 完成（96/168 层）
+00:29:47 | INFO    | [lossmeter] chunk 16 完成（102/168 层）
+00:30:47 | INFO    | [lossmeter] chunk 17 完成（108/168 层）
+00:31:45 | INFO    | [lossmeter] chunk 18 完成（114/168 层）
+00:32:43 | INFO    | [lossmeter] chunk 19 完成（120/168 层）
+00:33:42 | INFO    | [lossmeter] chunk 20 完成（126/168 层）
+00:34:17 | INFO    | [lossmeter] chunk 21 完成（132/168 层）
+00:35:11 | INFO    | [lossmeter] chunk 22 完成（138/168 层）
+00:36:06 | INFO    | [lossmeter] chunk 23 完成（144/168 层）
+00:36:58 | INFO    | [lossmeter] chunk 24 完成（150/168 层）
+00:37:50 | INFO    | [lossmeter] chunk 25 完成（156/168 层）
+00:38:42 | INFO    | [lossmeter] chunk 26 完成（162/168 层）
+00:39:31 | INFO    | [lossmeter] chunk 27 完成（168/168 层）
+00:39:31 | INFO    | [lossmeter] 全部完成：168 层 × 8 选项，耗时 1561.8s
+00:39:31 | INFO    | 损失表完成：168 层 × 8 选项 → results/losses_qwen0.5B.json
+=== 0.5B 2/3 分配 target=2.75 ===
+00:39:45 | INFO    | 分配完成：目标 2.75 bit，实际 2.750 bit，预测总损失 3.103e+09
+分布：{'w3g128': 91, 'w4g128': 9, 'w2g128': 68}
+→ results/alloc_qwen0.5B_t2.75_dp.json
+00:39:52 | INFO    | 分配地图：results/alloc_qwen0.5B_t2.75_dp_map.png
+00:39:56 | INFO    | 分配完成：目标 2.75 bit，实际 2.750 bit，预测总损失 3.119e+09
+分布：{'w2g128': 64, 'w3g128': 97, 'p75': 2, 'w4g128': 5}
+→ results/alloc_qwen0.5B_t2.75_greedy.json
+00:40:01 | INFO    | 分配完成：目标 2.75 bit，实际 -1.000 bit，预测总损失 4.843e+08
+分布：{'w4g128': 168}
+→ results/alloc_qwen0.5B_t2.75_unifw4.json
+=== 0.5B 3/3 应用+验证 target=2.75（dp vs uniform-w4）===
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   8%|▊         | 22/290 [00:00<00:01, 209.37it/s]Loading weights:  15%|█▍        | 43/290 [00:00<00:01, 172.14it/s]Loading weights:  21%|██▏       | 62/290 [00:00<00:01, 169.75it/s]Loading weights:  31%|███       | 89/290 [00:00<00:00, 204.82it/s]Loading weights:  38%|███▊      | 111/290 [00:00<00:00, 197.00it/s]Loading weights:  46%|████▌     | 132/290 [00:00<00:00, 194.53it/s]Loading weights:  52%|█████▏    | 152/290 [00:00<00:00, 158.90it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 331.06it/s]
+00:41:11 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+00:41:14 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+00:41:32 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "F:\MyProgram\BIG\liteforge\liteforge\cli.py", line 594, in <module>
+    main()
+  File "F:\MyProgram\BIG\liteforge\liteforge\cli.py", line 590, in main
+    return args.fn(args)
+           ^^^^^^^^^^^^^
+  File "F:\MyProgram\BIG\liteforge\liteforge\cli.py", line 335, in cmd_apply_alloc
+    report = apply_allocation(model, alloc, calib, max_batches=args.calib_size,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\MyProgram\BIG\liteforge\liteforge\allocate.py", line 193, in apply_allocation
+    H_dict = collect_xtx(model, [(l, linears[l]) for l in linears_c],
+             ^^^^^^^^^^^
+NameError: name 'collect_xtx' is not defined. Did you mean: '_collect_for'?

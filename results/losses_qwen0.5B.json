@@ -1,0 +1,8092 @@
+{
+  "task": "loss-report",
+  "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B",
+  "method": "lossmeter",
+  "params": {
+    "menu": [
+      "w8g128",
+      "w4g128",
+      "w3g128",
+      "w2g128",
+      "p25",
+      "p50",
+      "p75"
+    ],
+    "calib_size": 16,
+    "quant_impl": "rtn",
+    "prune_mode": "static"
+  },
+  "metrics": {},
+  "env": {
+    "torch": "2.14.0+cu126",
+    "cuda_available": true,
+    "device_name": "NVIDIA RTX A5000",
+    "timestamp": "2026-09-06 00:39:31"
+  },
+  "table": {
+    "model.layers.0.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 551.2830594933325,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 179693.95987681125,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 716929.6720134174,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 4051874.4010325284,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 7416.238083812948,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 77075.3462385263,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 509750.3517164597,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.0.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 90.1158094811153,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 26536.938247889055,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 161016.07479628417,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 675884.0070023364,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1813.3375564867547,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 18760.22366152321,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 126816.72586388636,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.0.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1.7798945969452225,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 626.1245475367164,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 2741.9450363135566,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 11240.316639484874,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 41.34050409060371,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 403.36727454207767,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2131.2499567086516,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.0.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 0.42767562301875806,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 116.76440726601864,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 569.8004136293471,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2808.334294257228,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 5.645659177795483,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 80.52797939025974,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 554.0790537577079,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.0.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 9535.112476160295,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 2730511.5272650616,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 12588730.298723552,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 65850323.64847781,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 924412.9418692967,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 8983922.469012685,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 42770406.97189888,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.0.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 6160.903256035865,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1760009.1549494101,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 7455491.14578115,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 34302738.94931327,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 608594.2472166303,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 5819429.356110486,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 25140135.36796002,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.0.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 168.6096700744221,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 48721.10129655972,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 224051.25585779262,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1123212.298018778,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 10328.847154587424,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 113389.21459248682,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 609818.2022412438,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.1.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 2589.1794399226055,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 761714.2768552944,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 3462223.58792344,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 18043713.290760383,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 167294.31219679938,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 1748031.2932660123,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 9342961.547367698,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.1.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 739.6656211674942,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 211203.00913921747,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 940450.2782780965,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 5487934.0461407835,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 46762.29231464269,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 495313.6747287556,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2729152.52680905,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.1.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 77.0322668173323,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 22529.006246377758,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 94566.81823389999,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 407456.96765147283,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 3238.6143912234234,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 34219.09291216761,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 178912.8506999673,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.1.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 96.59090797035421,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 48631.12600437466,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 185556.54943453753,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 394765.27558031527,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 67847.38063520446,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 135045.4049714728,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 476875.00655833294,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.1.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 14178.005063200308,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4015076.81247712,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 18446992.28409801,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 103280663.64057201,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1501319.5415522621,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 15955193.593320217,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 87528013.60248503,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.1.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 7405.4306358103595,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 2118661.2818714464,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 9688747.310063358,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 45065600.38915611,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 854690.6694413301,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 8121608.220537157,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 35315086.75810261,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.1.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 116.02649076487873,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 33413.11468051365,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 154211.788290139,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 813323.0911194726,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 11469.374641343122,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 113854.30386744771,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 544505.5873492435,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.2.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 4714.555635783994,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1353402.7186141144,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 6362923.787389244,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 29343883.827265695,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 227087.74757755437,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2232099.1238932973,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 11251429.221237395,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.2.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1303.8055094074111,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 407947.4785911988,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1766523.7968732712,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 9006531.634847535,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 67681.84440638241,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 673576.6669673342,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 3809989.07676224,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.2.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 164.49761892537458,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 48286.06125534733,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 210301.02125413355,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 881348.1911918673,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 5575.22578013028,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 55156.038566880925,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 286257.0333417437,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.2.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 51.08815035702316,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 14713.682676295653,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 71146.36005704498,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 376020.7668274815,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1923.4263684736877,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 22466.146656801553,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 143846.31725176005,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.2.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 18144.813517068633,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 5284954.416043887,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 24310553.61321885,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 137763130.38534743,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 2095034.1226197463,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 21645347.995656542,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 122140014.29309556,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.2.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 9983.924529920318,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 2864302.6212468967,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 12790207.179302333,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 61231115.87602921,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1161922.543818614,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 10926578.097652651,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 47735585.731226854,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.2.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 3708.250978775313,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 873391.5054545517,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1667408.8381967065,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 3122498.4077109103,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 20920.967753538873,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 199346.41755754856,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 906746.3521666666,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.3.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 5977.440411194753,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1685725.3524632237,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 7348254.607332384,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 34624483.02348804,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 231193.806407,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2275416.009506555,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 11642529.052495342,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.3.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1385.1094845636978,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 406595.4972821264,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1682300.0219830882,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 8231197.457473285,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 52972.24511394067,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 525827.6710845757,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2747606.6469308464,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.3.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 403.8319988194501,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 109312.99312742065,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 435639.66267896094,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1840829.1657376394,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 16249.111706091975,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 163692.95756222322,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 838427.4732561287,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.3.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 89.70113887306997,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 25616.862495418238,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 113590.53277523772,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 537160.9826639565,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 2646.3682885747694,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 31542.59846892909,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 210104.6714321248,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.3.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 22766.74922037303,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 6545107.932323232,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 30023091.539454572,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 176825066.4877289,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 2480844.2175906934,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 25040403.793835465,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 125437945.87226279,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.3.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 13764.057810331156,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 3960723.9142543464,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 16976795.64975939,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 74587741.40866043,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1605698.5701680905,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 14318219.588817956,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 60515456.82492572,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.3.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 2311.3898034450112,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 462996.1701766999,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1292384.652511731,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 3118308.56151022,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 232785.8031114178,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 688398.8193548879,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1765262.577801486,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.4.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 5295.571698005162,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1554503.1057511293,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 6807566.372611056,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 36239210.858842745,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 242603.40365285374,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2424860.4724965747,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 12117851.083472826,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.4.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1034.3771304897696,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 295477.5021180655,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1419795.5684202323,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 6864408.5491934195,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 45156.039394436775,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 446193.86580410786,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2296902.771582473,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.4.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 481.66646780674745,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 144329.58643811883,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 603866.246072985,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2416782.5383062763,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 18990.256494302223,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 201832.74341842267,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1081558.6201414661,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.4.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 128.6361835651034,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 36776.51916043612,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 169024.94377582613,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 859193.7024149352,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 4653.380157442058,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 56447.51640701188,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 356850.8789655844,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.4.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 23145.29132965341,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 6678521.985331792,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 30463828.502692297,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 166644558.8617752,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 2313691.9951082207,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 22328408.960069016,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 108702249.98394735,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.4.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 15311.390067949938,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4405819.65828124,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 19534376.36639621,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 84326344.06138195,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1538431.5365675515,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 14378069.252592932,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 62217264.6788989,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.4.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 329.96654960501587,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 95434.03658242876,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 432717.1713756734,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2180685.371015029,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 29109.15189256794,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 301822.776123695,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1471770.5728277955,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.5.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 5789.125998815622,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1730647.7952353393,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 8133070.94138911,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 41282366.984495334,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 328289.76069262717,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 3260964.1221904876,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 15935554.758196436,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.5.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1089.475715178994,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 343709.46458354744,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1486496.7373604202,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 7923440.747265543,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 55185.25383361127,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 556260.2343400466,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2858632.9062742484,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.5.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 653.7445645784788,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 184372.04740326793,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 729173.9136301997,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2863898.165752793,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 30895.47034275031,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 325053.2029919332,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1681825.0942656673,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.5.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 134.22686933018736,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 38950.4763192442,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 178434.6581437518,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 958590.1528366428,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 8074.5235079951735,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 93925.0926647106,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 515430.77790203854,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.5.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 43279.35082832971,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 12474911.650166858,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 56844167.95137383,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 329860168.44275296,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 3669738.9122157004,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 35485214.64194465,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 167886768.31073022,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.5.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 22002.662524325824,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 6318819.881476698,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 26790393.970142856,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 110756043.25114897,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1910108.565744638,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 18500155.901654124,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 81698836.61451994,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.5.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 342.71989702464833,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 98514.04952248972,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 449711.7255721488,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2345181.437686242,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 25967.283126809656,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 294441.52096957405,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1601353.2442842473,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.6.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 5368.799389956868,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1612332.4389233936,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 7127790.913944418,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 34590874.262855746,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 257248.2658410223,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2568826.3970397334,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 12948152.53116102,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.6.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1215.8017198277425,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 341261.05784183636,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1506184.245539315,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 8671643.533554336,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 49931.779082549394,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 499704.6711517541,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2753968.8063016552,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.6.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 375.9152686449129,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 109249.37142757289,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 494681.89906758757,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2124735.007350318,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 17376.683387092435,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 175224.55034681084,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 906210.0364044125,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.6.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 123.33532956618885,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 35293.966486360645,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 163056.31435628782,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 822440.9629941692,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 3973.0747873045575,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 48147.91659189647,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 291059.3376165356,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.6.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 24348.888782583454,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 7003589.552363837,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 32565089.237206586,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 178324520.03112516,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 2197741.969660667,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 21501933.898359984,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 107061277.59379318,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.6.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 17198.0005031295,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 5010079.783852892,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 21449057.88876749,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 93339820.02829365,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1603374.366158485,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 15495207.821746815,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 68255384.0417466,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.6.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 342.60299557984337,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 99338.09352986864,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 452414.45341984223,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2332092.440523057,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 30805.057571376972,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 323126.8985086292,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1628802.9041410186,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.7.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 7999.199383581164,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 2299087.111461401,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 10066983.318874232,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 48989623.3310564,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 282733.72887517925,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2843636.6501439,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 14219025.365741715,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.7.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1970.1955296875126,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 526592.1638120344,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 2313195.124123779,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 11995882.880193694,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 52819.86849167946,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 528545.5878747873,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2783981.874463383,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.7.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 688.0185984006232,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 207574.3956942756,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 787410.3818142551,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2904018.9271457335,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 26708.78405945406,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 265351.0756321901,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1464424.080652025,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.7.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 168.76819147288762,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 49145.31889431854,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 220496.84958794658,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1090819.0791431481,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 10042.714452917617,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 105963.6808835445,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 519806.307638675,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.7.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 23233.42401896249,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 6658282.31672204,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 30231845.039343078,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 163411823.97557357,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1966317.5353247663,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 19523923.75102222,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 97515974.26645637,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.7.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 18367.225407002992,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 5265835.084412811,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 22643490.64881744,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 96945633.58543107,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1621463.2024100712,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 15538983.314316913,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 68628529.1441472,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.7.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 393.4969177944715,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 112757.89496831893,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 510150.22145679675,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2559631.3016401753,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 30753.462214537096,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 324388.90240007197,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1630971.0304767762,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.8.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 6743.056100540962,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1983353.225570261,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 8522158.50426215,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 41284046.02873583,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 237588.20931792894,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2441993.6069668476,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 12761400.321150936,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.8.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1585.8993250206104,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 418260.0298902393,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1982025.6984239188,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 9297816.75880231,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 50558.779323647206,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 525385.0143250277,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2783668.9755021185,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.8.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 457.459445610244,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 143219.646962119,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 667331.9609883637,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 3018022.823353733,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 11396.902289964215,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 123031.88299718182,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 722922.9957191069,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.8.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 266.49242667742294,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 75751.71310747386,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 341098.96641405066,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1767077.2331164954,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 10535.419668000595,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 117432.53482738291,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 670388.6610082317,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.8.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 20103.59287804136,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 5813948.381411662,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 26150756.689663954,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 140950085.51560235,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1556651.3251130055,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 15434149.866891477,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 78355018.5805668,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.8.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 15422.828221198964,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4475216.351509201,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 19783662.125521146,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 81918549.94225958,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1210288.1786115672,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 11861989.318838011,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 54227472.337897904,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.8.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 254.22417733773025,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 73322.97795992467,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 335851.80309720594,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1767579.129503532,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 24379.66042466274,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 255409.5869650211,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1281215.654345119,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.9.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 15154.178511534803,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 3465771.966089564,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 13510555.37900677,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 58835320.39021498,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 285109.31945511675,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2927685.408671843,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 15733647.659916341,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.9.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 2863.9229718288134,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 696376.4121776059,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 2617868.784927316,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 12841151.116229929,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 38787.962279091385,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 406117.2269742137,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2367943.503858024,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.9.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1314.056342413306,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 256379.7864259191,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 860869.993648367,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 3065920.1754831104,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 21241.62801459871,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 240193.38379918362,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1337325.6631835857,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.9.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 199.89127744574802,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 57042.98816237369,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 267485.76289636584,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1281434.4381294241,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 4641.54239902991,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 65142.42173601068,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 437325.18124277034,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.9.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 16688.48797858343,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4807998.200219935,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 21901808.988082465,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 120293351.61529945,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1402893.8580916403,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 13888467.73322008,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 69602090.36399013,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.9.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 14353.58781776101,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4135260.6579054976,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 17889971.399188653,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 79096091.47067648,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1185738.4035470788,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 11633051.922020894,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 53589255.82883869,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.9.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 246.69565696333513,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 71337.2348875363,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 325531.96129188215,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1656004.6618825179,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 22118.207099328345,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 225635.28527970292,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1085217.1539385167,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.10.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 5633.660544776356,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1606470.387069372,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 7242138.839764252,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 36253552.06281571,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 213721.6050348523,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2197107.929191304,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 11777709.585706223,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.10.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 943.2794686692077,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 311188.74100408325,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1372646.3589812545,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 7676778.139967497,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 35753.148988616944,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 377328.57120047056,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2172422.1603082004,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.10.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 802.2734911548519,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 215002.1326733508,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 782609.7525590807,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 3268860.398831541,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 21487.129250230915,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 245474.88269525455,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1463907.0685431496,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.10.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 315.4212494143019,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 93825.22135552613,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 424796.4016275483,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1956328.872891205,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 10986.573256829015,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 124195.27887477799,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 692835.7947938232,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.10.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 16586.552672049336,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4794634.874785926,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 22333065.23735962,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 117756405.78210394,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1231000.3545280492,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 12170165.712900165,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 60937444.826682806,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.10.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 13120.987398234523,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 3780961.2607137756,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 16650828.617352434,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 71358378.50941339,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 958609.3135563853,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 9415082.145848548,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 44302925.63658431,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.10.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 210.30096534892257,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 60383.24547557914,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 276044.7760108683,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1421374.5787909597,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 17595.13894536125,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 184598.95886784245,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 917530.935316067,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.11.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 14516.01647485539,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 3369162.029589736,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 13395181.604247496,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 57928357.44195684,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 258683.1048261333,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2725053.42008992,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 15171153.537489766,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.11.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 3066.2070254101363,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 743251.8652627191,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 3119048.1101618055,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 13982175.359118603,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 39106.75592588031,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 403036.27861872414,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2448342.0348575786,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.11.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1293.654042028917,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 279681.07081362547,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1018860.2097642788,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 3871112.7614326486,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 24824.25354708718,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 269976.43126357225,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1476299.9061404513,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.11.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 232.11139215098606,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 62188.51965905809,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 298173.6974817484,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1395087.3876009006,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 2704.2714548326567,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 46263.677737098216,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 331914.982176783,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.11.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 14938.422437927595,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4297544.931592476,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 19463028.402806863,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 105114422.60054551,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1190368.114866631,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 12002795.228891155,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 60813271.03955194,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.11.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 13700.906432265489,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 3907204.9242058354,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 17175007.81600815,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 77362564.91081543,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1125800.7392464173,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 10912270.562328245,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 50782714.35431542,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.11.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 300.2119979804605,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 85403.73034818552,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 361303.2637385163,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1685909.56700509,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 20609.47032968393,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 202881.51848338725,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 956592.8865996288,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.12.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 5120.042460282926,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1470060.576626944,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 6850918.793336772,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 35354782.77614282,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 235294.9307880218,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2491421.7489450388,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 13435557.751564223,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.12.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 924.2485130298776,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 266233.5932232365,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1191722.300935811,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 6573314.565264146,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 36132.79707580511,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 399718.716012013,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2310723.4817701536,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.12.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 646.6736810104399,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 182305.022906071,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 720710.1850904059,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2899201.782222209,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 21105.384593213592,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 246773.9676189004,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1444773.3626413837,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.12.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 267.79631368962566,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 78778.63897303637,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 358378.7320622157,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1803597.526241969,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 10558.187725944266,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 117345.69635272239,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 643119.0320240054,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.12.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 15458.777739313866,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4492603.705469243,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 20509413.68231923,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 108379263.6542705,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1087585.552419684,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 10748558.909479076,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 53634175.94712845,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.12.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 14018.24724454219,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4032863.4411163577,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 17849584.039731897,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 78241844.97231415,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1033808.6616754652,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 10135895.939210813,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 47802204.997804664,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.12.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 236.7959700319492,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 69214.46742989379,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 314425.14191561873,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1607866.9800169398,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 20445.09755289458,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 209624.10367081195,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1012320.3015076423,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.13.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 9248.092303661879,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 2573696.1058105165,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 11140277.821965214,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 49869977.6005937,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 273796.2308193812,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2945477.5599899217,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 16291973.3329236,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.13.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1803.4394822691493,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 494289.4793351486,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1963090.9791342742,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 9993614.40711308,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 39219.68636417379,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 434694.46590217133,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2639085.523407006,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.13.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 825.0551063960714,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 237152.2152118272,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 894681.1827136129,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 3511199.742966456,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 27636.727226054252,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 306232.0903368512,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1727323.3665043372,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.13.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 208.09444969956985,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 60165.53563736282,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 274909.8504911187,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1435466.3049753138,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 9966.185100882552,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 105858.75843052086,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 552519.6344361852,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.13.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 16480.183673069118,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4748398.065982034,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 21545419.999469277,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 113465901.83652519,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1098232.3325255993,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 10795906.846125912,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 52670816.74507582,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.13.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 16333.848893625767,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4735591.56859717,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 20773169.54825142,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 90620831.66755554,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1165657.5018764087,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 11401865.615235783,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 53731406.49787708,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.13.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 315.5925708844218,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 91574.75851822294,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 417233.00363355415,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2115849.03020829,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 24331.903519726493,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 247356.2057767424,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1210987.1932599535,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.14.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 7370.207451063022,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 2134913.3022110797,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 10022940.459880259,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 47883365.42719509,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 276754.07370724244,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 3011702.8167117964,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 16532277.421564067,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.14.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1077.5349384474089,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 322601.3234018405,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1504244.0531770492,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 7913958.146100784,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 41459.67349852133,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 463152.746490345,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2646042.4519948196,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.14.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1104.1145481506385,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 303246.57641870406,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1181536.93071409,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 4557004.903551003,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 30452.603325359072,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 329661.05218604114,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1819944.5168646905,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.14.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 506.21320528967874,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 144997.4769014018,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 658998.2672994058,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 3323196.2623538254,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 22450.70511752177,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 262136.58739179213,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1497434.868624952,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.14.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 20149.665481748347,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 5643464.64205934,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 25547342.102873653,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 132170047.32989152,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1132289.4914399635,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 11123296.688716248,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 54850864.77586579,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.14.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 17887.461346818636,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 5091538.37172276,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 22648571.25730824,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 100388499.50080062,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1142515.0459391938,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 11200029.090175226,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 52653243.252904914,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.14.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 423.4450299524785,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 121097.76575034621,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 553336.3571248597,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2756557.0609660884,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 28094.32592888036,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 292302.8845426678,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1457593.7298397382,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.15.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 7189.789224440141,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 2035267.5721456178,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 9242760.235686375,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 45280821.47389319,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 278103.67897956824,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2950384.3384110704,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 16131606.444279902,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.15.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1280.423359041171,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 368845.8179036081,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1737490.4630313762,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 8913312.31291234,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 50200.53599918508,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 546600.6210000423,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 3140158.0837915735,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.15.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 964.6300754578826,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 283910.3744980964,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1223058.8922665254,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 4923981.720512967,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 37807.4707472648,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 391130.19219066517,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1996413.8671521624,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.15.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 407.0799062394145,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 118822.71712318173,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 538705.2499674535,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 2601835.119541553,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 13928.438780323173,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 157245.08431856288,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 826806.2045684184,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.15.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 24005.44837976878,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 6955331.237785168,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 31304725.616808206,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 164142082.80091518,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1390024.0892214822,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 13542315.32737434,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 66641004.735719346,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.15.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 22981.475639549557,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 6725670.721927052,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 29858237.25853458,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 125554144.21939614,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1458645.8135485072,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 14328718.948455893,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 66352824.320101194,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.15.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 646.610083985575,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 186562.36644662337,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 843649.451454906,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 4130120.897935712,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 36222.543802718654,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 388375.7116785904,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2015875.7186654517,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.16.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 15862.36175786584,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4613470.006256748,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 19057054.453343503,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 74053893.15065742,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 454958.95735467726,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 4694020.155450932,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 23779588.063654415,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.16.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 2329.5627316765786,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 689784.5286260339,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 3079593.6108660307,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 14282918.067362137,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 41707.40469664328,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 445204.55706062977,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2379174.000646404,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.16.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 2813.9233282869754,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 594097.419333925,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1892942.4847659846,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 5698618.352293804,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 15182.022405477266,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 158812.19140137918,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 801795.3914552446,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.16.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 185.2849323503545,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 54331.80713297746,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 247454.12837956613,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1263517.6193759015,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 10522.105228475475,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 127174.94631016359,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 781081.5053876039,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.16.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 37118.27498105107,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 10650343.900400914,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 47864159.49906498,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 263386414.37087703,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1942613.5476986698,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 19075371.076894447,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 94509130.68155134,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.16.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 29855.309898335916,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 8349880.114177535,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 36603901.52403642,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 150450716.76620924,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 1684368.3688006196,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 16637677.253708525,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 77299699.15140653,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.16.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1165.4260213082782,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 336347.5810781169,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1488573.6174077152,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 7017028.613579152,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 55617.53793921134,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 580480.1725482331,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2968935.681788952,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.17.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 9445.187025002462,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 2792034.7283787,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 12456346.32135106,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 59138632.38681031,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 459484.7732010953,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 4533136.610602826,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 21868999.406844586,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.17.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1302.8568329945692,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 391161.7272950972,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1815434.0838650423,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 9090594.033192394,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 65942.9245462957,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 644604.0889140337,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 3169070.0654430646,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.17.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1392.369156306361,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 408855.31574203615,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1570590.088301383,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 5976944.497417387,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 55060.402933892154,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 550590.0002977166,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2581991.5120332907,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.17.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 527.5960303334195,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 199557.95210455073,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1039645.6637128764,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 3124501.621260192,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 67120.26605268993,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 326617.278809702,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2021378.6093948765,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.17.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 55463.04501724535,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 16367122.68625963,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 72749633.66985008,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 401092145.0670589,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 3086068.0448123273,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 30553397.124795854,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 152467339.74501753,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.17.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 36756.81608589433,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 10601679.347056063,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 46267886.877471626,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 186943747.30114377,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 2341809.7620640905,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 23171692.774058737,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 107946785.05363414,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.17.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 952.5311425228315,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 276062.4969292913,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1250260.6529567405,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 6348010.475286341,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 63667.911298603154,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 667706.9204626125,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 3324481.8941652095,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.18.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 9537.107765612747,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 2725692.8820134434,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 12160349.29025831,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 54514584.91113761,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 406655.3467209262,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 4011466.0870675887,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 19408753.10234861,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.18.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1508.379481853453,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 421690.92801038147,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 2110946.846588848,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 10556278.45677812,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 65116.6247739248,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 633107.4313729585,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 3125239.5531122386,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.18.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1569.0347804303274,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 403530.14882967557,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1539374.109083194,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 5595424.174262777,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 78656.60184720535,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 771382.5522287912,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 3527145.818557882,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.18.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 294.83659527959276,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 85142.75220863966,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 389297.65311457263,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 1837753.4217730286,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 18340.616723695755,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 191157.84446614183,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 958169.1364538835,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.18.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 40565.849976980695,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 11957086.432547089,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 54210425.69097797,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 296756810.6523185,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 2994947.5460274806,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 29578827.317982383,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 146011085.6166036,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.18.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 33653.54252332018,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 9686746.11870729,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 42988619.46360062,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 188612447.00902173,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 2642199.4299047096,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 25942555.105977528,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 120060074.55111176,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.18.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 967.6645630480136,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 282248.42986602127,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1294372.8092426877,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 6693708.737705681,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 83835.56063489123,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 838392.3116504739,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 4009217.9189192196,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.19.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 9836.164528135003,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 2837652.76320864,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 13022853.170982547,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 63688231.45273752,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 364875.2121514251,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 3581029.5061707254,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 17141825.764026985,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.19.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1639.6346912137935,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 439423.45143308246,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 2164028.406914063,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 10683825.131784037,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 48279.61177299066,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 470281.69806447625,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2276384.9723789864,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.19.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1699.1696722582603,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 432842.21209486516,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1851535.1913676509,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 7283330.203890268,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 51495.62201126286,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 521824.8916430635,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2596575.2170480574,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.19.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 502.47259968593744,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 142954.81185286562,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 653105.4834679856,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 3414490.622003991,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 22057.799653404636,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 264348.87071364204,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1552498.2967305202,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.19.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 62401.99711105785,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 17606771.449848026,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 82609860.05101702,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 452153936.3767717,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 3544272.56376708,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 34621884.016064286,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 167675461.7939393,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.19.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 52912.881570981364,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 15193080.533136198,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 67818711.00230081,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 281963765.64557946,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 3332457.7628331315,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 32612263.69731839,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 152418557.22162122,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.19.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 2157.7253910168674,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 627290.735829789,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 2823753.8422667133,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 14093349.900675692,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 125975.9699004881,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 1281419.890350456,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 6420244.883427195,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.20.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 12965.637010600107,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 3750281.241038274,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 16063154.692597367,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 68791279.93361482,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 390610.8028464881,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 3832543.683630695,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 17959054.952240318,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.20.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1685.421565306834,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 472306.2725056998,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 2139011.037264714,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 10719812.88792591,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 51801.93960918864,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 514227.9277735023,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2435770.558204538,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.20.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 3948.462418205948,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1066630.4231518153,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 3716857.3663283926,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 11935869.407249196,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 48847.29559514724,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 504116.10962437675,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2430400.258471666,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.20.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1644.618981303711,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 580202.9193395996,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 2626301.5757849333,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 7275511.254627945,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 880324.432102157,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2111064.462911966,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 5295690.079653528,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.20.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 61098.84930278754,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 17624921.63954542,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 82050848.63581115,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 452681657.30599976,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 3694280.0091478825,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 36663988.09528336,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 185158886.40196216,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.20.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 59374.06771196824,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 16892097.367833667,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 74566817.96013568,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 336217761.518765,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 3790239.6825038595,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 37360513.70176065,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 176805578.8456394,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.20.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 3700.5293741997975,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1071516.840481607,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 4870515.4101847485,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 25042522.170181677,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 189392.38563295486,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 1940055.3463681382,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 10089147.236890161,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.21.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 14513.039283763937,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 3973675.4719638415,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 16568316.361813407,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 63306723.510853484,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 242550.74884812674,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2387666.723609406,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 11547313.444622763,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.21.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1702.0988107952485,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 459783.7989899961,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 2182324.398736579,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 9145459.421439864,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 25838.17568526904,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 254025.6077132653,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1276002.7280002679,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.21.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 5674.823392407319,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1448130.1739259232,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 4908357.378453689,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 20014464.93001906,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 53697.66614913121,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 558729.8260642331,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2866134.634132917,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.21.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 3084.6929508448407,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1119244.7470716587,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 6827595.199475059,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 14188454.504028397,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 408595.85533427226,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 1593120.7362952596,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 5859145.934284209,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.21.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 48693.90816475417,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 13905125.727010725,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 63848262.67284324,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 353149600.63597095,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 3904776.576851764,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 38873852.309987575,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 194986546.35864598,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.21.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 48684.09784901722,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 13841791.572350409,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 65283007.49695773,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 316398632.14018124,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 4126084.4993966618,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 40901994.704368204,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 194116003.88358793,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.21.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 9776.8606979771,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 2393471.44741019,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 7398676.802180791,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 34645764.283978134,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 465567.6533760342,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 3401412.709320043,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 13765946.040778786,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.22.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 13789.853888735612,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 3970907.2814151496,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 15545074.583592594,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 59796481.72219137,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 225825.61756502092,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2220044.755044819,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 10657329.141674697,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.22.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1515.5139618409355,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 471423.3935825723,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1857516.2562024735,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 9590395.285612594,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 21152.20606506699,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 214680.13365601638,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1142607.016895926,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.22.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 4746.152566478464,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1304358.8006739693,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 4450995.208493265,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 17697811.655210882,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 40831.84840028548,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 402948.134328905,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 2063675.7550278134,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.22.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1092.1263518187338,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 322689.6342424536,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 1459991.998708718,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 7809757.221639831,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 54620.26968058658,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 600567.5308229089,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 3298976.6283700075,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.22.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 42481.03842424997,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 12172419.427299822,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 55901155.13599715,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 302703402.1060984,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 3499785.94094631,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 34391477.82673267,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 167733467.35935795,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.22.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 45147.013191070684,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 12930829.282985313,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 59403597.87214705,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 300121070.54246116,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 3912687.0697979433,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 38461194.8095839,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 181511027.34121114,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.22.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 7322.808331315388,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 2135101.7557124076,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 9657146.517325671,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 45698628.66354546,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 366488.53878621577,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 3571658.3456358546,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 16875697.292278532,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.23.self_attn.q_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 17552.655593801566,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 4798702.734720819,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 19410191.184569325,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 73246535.71618444,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 307786.70730248326,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 2980077.568885057,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 15872182.35918648,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.23.self_attn.k_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 1980.4686451901096,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 487703.57837740396,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 2271150.321650451,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 11056344.24183229,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 28099.75864534123,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 278464.29257284006,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 1565548.0859782938,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.23.self_attn.v_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 3985.933884112026,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 1088475.6050018608,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 4396495.965776366,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 18762614.83683045,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 49947.87226204062,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 521041.732613464,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 3658874.080628706,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.23.self_attn.o_proj": {
+      "shape": [
+        896,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 3045.646628184131,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 849864.294486981,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 3832837.9526569885,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 19297566.65519011,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 68930.70864163947,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 844300.3032678294,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 5393449.732657541,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.23.mlp.gate_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 57773.606134610745,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 16432402.52224895,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 77239086.87190604,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 411961220.91689116,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 4642972.467371302,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 45800002.78841832,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 245947725.74012893,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.23.mlp.up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 56613.34354371135,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 16187131.75015584,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 74610121.48215212,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 372302429.61338806,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 4640033.879460007,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 45448683.84071545,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 220590513.23420733,
+          "kind": "prune"
+        }
+      }
+    },
+    "model.layers.23.mlp.down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "options": {
+        "fp16": {
+          "bits_eff": 16.0,
+          "loss": 0.0,
+          "kind": "keep"
+        },
+        "w8g128": {
+          "bits_eff": 8.25,
+          "loss": 32621.23738981793,
+          "kind": "quant"
+        },
+        "w4g128": {
+          "bits_eff": 4.25,
+          "loss": 9562249.681511592,
+          "kind": "quant"
+        },
+        "w3g128": {
+          "bits_eff": 3.25,
+          "loss": 41486974.918855846,
+          "kind": "quant"
+        },
+        "w2g128": {
+          "bits_eff": 2.25,
+          "loss": 135499695.6180355,
+          "kind": "quant"
+        },
+        "p25": {
+          "bits_eff": 12.0,
+          "loss": 360808.12478716654,
+          "kind": "prune"
+        },
+        "p50": {
+          "bits_eff": 8.0,
+          "loss": 3629163.6991828447,
+          "kind": "prune"
+        },
+        "p75": {
+          "bits_eff": 4.0,
+          "loss": 18355421.07674556,
+          "kind": "prune"
+        }
+      }
+    }
+  }
+}

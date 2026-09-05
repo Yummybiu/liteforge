@@ -102,3 +102,26 @@ def test_infeasible_budget_raises():
     dims = _dims(table)
     with pytest.raises((ValueError, MemoryError)):
         dp_allocate(menus, dims, 0.5, granularity=0.25)  # 低于全 w2 的平均比特
+
+
+def test_apply_allocation_end_to_end(tiny_model, tiny_tokenizer, sample_text):
+    """apply_allocation 运行时路径（曾因漏 import collect_xtx 在真机才暴露——
+    教训：每个 CLI 可达路径都要有测试）。"""
+    from liteforge.allocate import apply_allocation
+    from liteforge.data.text import BlockBatcher
+    from liteforge.utils import find_linears
+
+    linears = find_linears(tiny_model, exclude=("lm_head", "embed_out"))
+    w0 = {n: m.weight.data.clone() for n, m in linears[:3]}
+    # 3 层分配：一个量化、一个剪枝、一个保留 fp16
+    alloc = {linears[0][0]: "w4g128", linears[1][0]: "p50", linears[2][0]: "fp16"}
+    batcher = BlockBatcher(tiny_tokenizer, sample_text, block_size=64, batch_size=2)
+    report = apply_allocation(tiny_model, alloc, batcher, max_batches=2)
+
+    assert report["applied"] == {linears[0][0]: "w4g128", linears[1][0]: "p50"}
+    assert report["skipped_fp16"] >= 1
+    assert not torch.equal(linears[0][1].weight.data, w0[linears[0][0]]), "量化层应被修改"
+    assert not torch.equal(linears[1][1].weight.data, w0[linears[1][0]]), "剪枝层应被修改"
+    assert torch.equal(linears[2][1].weight.data, w0[linears[2][0]]), "fp16 层不得被修改"
+    ids = torch.randint(0, 47, (1, 32))
+    assert tiny_model(input_ids=ids).logits.isfinite().all()
