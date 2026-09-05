@@ -21,6 +21,42 @@ def effective_bits(rec: dict) -> float | None:
     return None
 
 
+def plot_allocation_map(loss_table: dict, alloc: dict, out_path: str) -> str:
+    """逐层分配地图：横条按 transformer 层序排列，颜色 = 分到的压缩选项。"""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.colors import ListedColormap
+
+    def sort_key(name: str):
+        import re
+        m = re.search(r"layers\.(\d+)\.", name)
+        blk = int(m.group(1)) if m else -1
+        order = {"self_attn": 0, "mlp": 1}
+        sub = next((v for k, v in order.items() if k in name), 2)
+        return (blk, sub, name)
+
+    layers = sorted(alloc.keys(), key=sort_key)
+    opts = sorted({alloc[l] for l in layers})
+    cmap = ListedColormap(plt.cm.tab10.colors[: len(opts)])
+    color_of = {o: cmap(i) for i, o in enumerate(opts)}
+
+    fig, ax = plt.subplots(figsize=(10, max(3.0, len(layers) * 0.12)))
+    for i, l in enumerate(layers):
+        ax.barh(i, 1.0, left=0, color=color_of[alloc[l]], height=0.9)
+    ax.set_yticks(range(len(layers)))
+    ax.set_yticklabels([l.split("layers.")[-1] for l in layers], fontsize=5)
+    ax.set_xticks([])
+    handles = [plt.Rectangle((0, 0), 1, 1, color=color_of[o]) for o in opts]
+    ax.legend(handles, opts, fontsize=8, loc="lower right")
+    ax.set_title("Per-layer compression budget allocation")
+    ax.invert_yaxis()
+    fig.tight_layout()
+    os.makedirs(os.path.dirname(os.path.abspath(out_path)), exist_ok=True)
+    fig.savefig(out_path, dpi=150)
+    return out_path
+
+
 def plot_ppl_tradeoff(records: list, out_path: str = "results/tradeoff.png") -> str:
     try:
         import matplotlib

@@ -242,6 +242,113 @@ def cmd_report(args):
         logger.info("trade-off 图：%s", png)
 
 
+# ---------------------------------------------------------------- V2 commands
+def cmd_loss_report(args):
+    import numpy as np
+
+    from .data.text import BlockBatcher, load_eval_text
+    from .lossmeter import DEFAULT_MENU, measure_menus
+    from .utils import find_linears
+
+    model, tokenizer = load_pair(args)
+    linears = find_linears(model, exclude=("lm_head", "embed_out"))
+    calib = BlockBatcher(tokenizer, load_eval_text(args.calib_dataset),
+                         block_size=args.seqlen, batch_size=args.batch_size)
+    table = measure_menus(model, linears, calib, max_batches=args.calib_size,
+                          chunk=args.chunk, quant_impl=args.quant_impl,
+                          prune_mode=args.prune_mode)
+    rec = build_record("loss-report", args.model, "lossmeter",
+                       {"menu": [m["name"] for m in DEFAULT_MENU],
+                        "calib_size": args.calib_size,
+                        "quant_impl": args.quant_impl,
+                        "prune_mode": args.prune_mode}, {})
+    rec["table"] = table
+    path = save_json(rec, args.out or default_out("losses"))
+    n_opts = len(next(iter(table.values()))["options"])
+    logger.info("损失表完成：%d 层 × %d 选项 → %s", len(table), n_opts, path)
+    return rec
+
+
+def cmd_allocate(args):
+    import numpy as np
+
+    from .allocate import build_bucket_menus, dp_allocate, greedy_allocate, uniform_assign
+    from .utils import load_json
+
+    rec_in = load_json(args.losses)
+    table = rec_in["table"]
+    dims = {l: int(np.prod(v["shape"])) for l, v in table.items()}
+
+    if args.strategy.startswith("uniform:"):
+        res = uniform_assign(table, args.strategy.split(":", 1)[1])
+    elif args.strategy == "greedy":
+        res = greedy_allocate(build_bucket_menus(table, args.granularity),
+                              dims, args.target_bits, args.granularity)
+    else:  # dp，状态数超限时自动降粒度再回退贪心
+        res = None
+        for g in (args.granularity, 0.5, 1.0):
+            try:
+                res = dp_allocate(build_bucket_menus(table, g), dims,
+                                  args.target_bits, granularity=g)
+                if g != args.granularity:
+                    logger.warning("DP 粒度自动放宽至 %s bit", g)
+                break
+            except MemoryError:
+                continue
+        if res is None:
+            logger.warning("DP 状态数过大，回退贪心")
+            res = greedy_allocate(build_bucket_menus(table, args.granularity),
+                                  dims, args.target_bits, args.granularity)
+
+    from collections import Counter
+    dist = Counter(res["layers"].values())
+    rec = build_record("allocate", rec_in.get("model", "?"), res["strategy"],
+                       {"target_bits": args.target_bits,
+                        "granularity": args.granularity,
+                        "losses_file": args.losses},
+                       {"predicted_total_loss": res["total_loss"],
+                        "achieved_bits": res["achieved_bits"],
+                        "distribution": dict(dist)})
+    rec["layers"] = res["layers"]
+    path = save_json(rec, args.out or default_out("alloc"))
+    logger.info("分配完成：目标 %.2f bit，实际 %.3f bit，预测总损失 %.4g\n分布：%s\n→ %s",
+                args.target_bits, res["achieved_bits"] or -1, res["total_loss"],
+                dict(dist), path)
+    if args.plot:
+        from .report import plot_allocation_map
+        png = plot_allocation_map(table, res["layers"],
+                                  path.replace(".json", "_map.png"))
+        logger.info("分配地图：%s", png)
+    return rec
+
+
+def cmd_apply_alloc(args):
+    from .allocate import apply_allocation
+    from .data.text import BlockBatcher, load_eval_text
+    from .utils import load_json
+
+    alloc_rec = load_json(args.alloc)
+    alloc = alloc_rec["layers"]
+    model, tokenizer = load_pair(args)
+    calib = BlockBatcher(tokenizer, load_eval_text(args.calib_dataset),
+                         block_size=args.seqlen, batch_size=args.batch_size)
+    report = apply_allocation(model, alloc, calib, max_batches=args.calib_size,
+                              chunk=args.chunk, percdamp=args.percdamp)
+    metrics = eval_ppl_and_speed(model, tokenizer, args)
+    rec = build_record("apply-alloc", args.model, "mixed",
+                       {"alloc_file": args.alloc,
+                        "strategy": alloc_rec.get("strategy"),
+                        "target_bits": alloc_rec.get("params", {}).get("target_bits"),
+                        "predicted_total_loss": alloc_rec.get("metrics", {}).get("predicted_total_loss"),
+                        "n_applied": len(report["applied"]),
+                        "n_fp16": report["skipped_fp16"]}, metrics)
+    path = save_json(rec, args.out or default_out("apply_alloc"))
+    logger.info("已应用 %d 层（fp16 保留 %d），PPL=%.4f（预测损失 %.4g）→ %s",
+                len(report["applied"]), report["skipped_fp16"],
+                metrics["ppl"], rec["params"]["predicted_total_loss"] or -1, path)
+    return rec
+
+
 # ---------------------------------------------------------------- parser
 def main(argv=None):
     setup_logging()
@@ -326,6 +433,37 @@ def main(argv=None):
     sp.add_argument("--out", default="results/table.md")
     sp.add_argument("--plot", action="store_true")
     sp.set_defaults(fn=cmd_report)
+
+    sp = sub.add_parser("loss-report", help="V2: 逐层压缩损失菜单（统一货币）")
+    add_model_args(sp); add_eval_args(sp)
+    sp.add_argument("--calib-dataset", default="wikitext2:train")
+    sp.add_argument("--calib-size", type=int, default=16)
+    sp.add_argument("--chunk", type=int, default=0,
+                    help="每块处理的层数（控内存；0=全量）")
+    sp.add_argument("--quant-impl", default="rtn", choices=["rtn", "gptq"])
+    sp.add_argument("--prune-mode", default="static", choices=["static", "dynamic"])
+    sp.add_argument("--out", default=None)
+    sp.set_defaults(fn=cmd_loss_report)
+
+    sp = sub.add_parser("allocate", help="V2: 预算分配（dp/greedy/uniform:OPT）")
+    sp.add_argument("--losses", required=True, help="loss-report 产出的 JSON")
+    sp.add_argument("--target-bits", type=float, default=2.5)
+    sp.add_argument("--granularity", type=float, default=0.25)
+    sp.add_argument("--strategy", default="dp",
+                    help="dp | greedy | uniform:<选项名，如 w4g128>")
+    sp.add_argument("--plot", action="store_true", help="输出逐层分配地图")
+    sp.add_argument("--out", default=None)
+    sp.set_defaults(fn=cmd_allocate)
+
+    sp = sub.add_parser("apply-alloc", help="V2: 应用分配方案并评测 PPL（预测 vs 实际闭环）")
+    add_model_args(sp); add_eval_args(sp)
+    sp.add_argument("--alloc", required=True, help="allocate 产出的 JSON")
+    sp.add_argument("--calib-dataset", default="wikitext2:train")
+    sp.add_argument("--calib-size", type=int, default=16)
+    sp.add_argument("--chunk", type=int, default=0)
+    sp.add_argument("--percdamp", type=float, default=0.01)
+    sp.add_argument("--out", default=None)
+    sp.set_defaults(fn=cmd_apply_alloc)
 
     args = p.parse_args(argv)
     seed_everything(args.seed if hasattr(args, "seed") else 42)
