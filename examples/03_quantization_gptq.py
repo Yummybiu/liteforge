@@ -24,13 +24,11 @@ def main():
     args = ap.parse_args()
     seed_everything()
 
-    calib = BlockBatcher(None, load_eval_text("wikitext2:train"),
-                         block_size=2048, batch_size=8)  # tokenizer 下面填充
-
     results = {}
     for name in ("rtn_w4", "gptq_w4"):
         model, tokenizer = load_model_and_tokenizer(args.model)
-        calib.tokenizer = tokenizer
+        calib = BlockBatcher(tokenizer, load_eval_text("wikitext2:train"),
+                             block_size=2048, batch_size=8)
         if name == "rtn_w4":
             q = RTNQuantizer(model, RTNConfig(bits=4, group_size=128))
             q.quantize_()

@@ -21,8 +21,7 @@ import time
 
 import torch
 
-from .utils import find_linears
-from .utils.hessian import collect_xtx  # noqa: F401 (复用钩子模式参考)
+from .utils.hessian import collect_xtx
 
 logger = logging.getLogger(__name__)
 

@@ -30,8 +30,6 @@ import torch
 
 from .prune.base import per_row_topk_mask
 from .prune.obc import _sequential_zero, _sequential_zero_dynamic
-from .quant.rtn import group_params
-from .utils import find_linears
 from .utils.hessian import collect_xtx, damp_inverse
 
 logger = logging.getLogger(__name__)

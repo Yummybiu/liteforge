@@ -111,9 +111,8 @@ def evaluate_mmlu(model, tokenizer, n: int = 500, batch_log_every: int = 50) -> 
     buckets = {}
     for i, ex in enumerate(items):
         prompt = format_prompt(ex)
-        lps = _choice_logprobs(model, tokenizer, prompt, [str(c) for c in range(4)]
-                               if all(len(str(c)) == 1 for c in ex["choices"])
-                               else ["A", "B", "C", "D"])
+        # 选项续写恒为字母 A-D（与 prompt 的 "A. x" 格式一致；MMLU 的 answer 是索引）
+        lps = _choice_logprobs(model, tokenizer, prompt, ["A", "B", "C", "D"])
         pred = int(max(range(4), key=lambda j: lps[j]))
         # 选项是文本时，比的是"选项索引字母"——answer 是索引，语义一致
         ok = pred == ex["answer"]
