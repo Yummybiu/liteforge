@@ -1,0 +1,19 @@
+{
+  "task": "eval-ppl",
+  "model": "F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B",
+  "method": "dense",
+  "params": {},
+  "metrics": {
+    "ppl": 13.0282,
+    "nll": 2.567113,
+    "n_tokens": 296815,
+    "n_blocks": 145,
+    "block_size": 2048
+  },
+  "env": {
+    "torch": "2.14.0+cu126",
+    "cuda_available": true,
+    "device_name": "NVIDIA RTX A5000",
+    "timestamp": "2026-09-06 05:10:31"
+  }
+}

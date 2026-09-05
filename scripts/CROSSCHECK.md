@@ -35,3 +35,11 @@ python -m liteforge.cli quant-gptq --impl lib --model Qwen/Qwen2.5-0.5B \
 ```
 
 结果统一记录到 results/crosscheck_*.json 并进报告卡（核对区）。
+
+## 执行状态（2026-09-05 夜）
+
+- ✅ 左半（本仓库）：Qwen2.5-0.5B 完整 test 集 PPL = **13.0282**（results/20260906_051031_dense.json）
+- ⛔ 右半（lm-eval）：数据经 socks5 代理下载成功，但 lm-eval 的整段拼接前向
+  在 24G 卡上 OOM（27GB logits，batch=1 仍崩），且 Windows WDDM 驱动随后
+  wedge（需重启恢复）。命令已就绪，**重启后一键执行**：
+  `lm_eval --model hf --model_args pretrained=<模型路径>,dtype=bfloat16 --tasks wikitext --batch_size 1`

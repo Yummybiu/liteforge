@@ -78,3 +78,187 @@
 01:43:41 | INFO    | 已应用 168 层（fp16 保留 0），PPL=14.1639（预测损失 4.843e+08）→ results/apply_qwen0.5B_t2.25_unifw4.json
 === 1.5B 损失表 ===
 Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   7%|▋         | 25/338 [00:00<00:01, 244.92it/s]Loading weights:  15%|█▍        | 50/338 [00:00<00:01, 181.18it/s]Loading weights:  21%|██        | 70/338 [00:00<00:01, 180.31it/s]Loading weights:  26%|██▋       | 89/338 [00:00<00:01, 166.67it/s]Loading weights:  32%|███▏      | 109/338 [00:00<00:01, 175.62it/s]Loading weights:  38%|███▊      | 127/338 [00:00<00:01, 169.46it/s]Loading weights:  43%|████▎     | 145/338 [00:00<00:01, 155.90it/s]Loading weights:  52%|█████▏    | 175/338 [00:00<00:00, 187.84it/s]Loading weights:  58%|█████▊    | 196/338 [00:01<00:00, 171.86it/s]Loading weights: 100%|██████████| 338/338 [00:01<00:00, 284.15it/s]
+01:44:27 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B 加载完成：1544M params @ cuda:0, dtype=torch.bfloat16
+01:44:29 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+01:44:47 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+01:45:59 | INFO    | [lossmeter] chunk 0 完成（6/196 层）
+01:47:52 | INFO    | [lossmeter] chunk 1 完成（12/196 层）
+01:49:41 | INFO    | [lossmeter] chunk 2 完成（18/196 层）
+01:51:34 | INFO    | [lossmeter] chunk 3 完成（24/196 层）
+01:53:33 | INFO    | [lossmeter] chunk 4 完成（30/196 层）
+01:55:30 | INFO    | [lossmeter] chunk 5 完成（36/196 层）
+01:57:21 | INFO    | [lossmeter] chunk 6 完成（42/196 层）
+01:58:27 | INFO    | [lossmeter] chunk 7 完成（48/196 层）
+02:00:14 | INFO    | [lossmeter] chunk 8 完成（54/196 层）
+02:02:00 | INFO    | [lossmeter] chunk 9 完成（60/196 层）
+02:03:52 | INFO    | [lossmeter] chunk 10 完成（66/196 层）
+02:05:46 | INFO    | [lossmeter] chunk 11 完成（72/196 层）
+02:07:39 | INFO    | [lossmeter] chunk 12 完成（78/196 层）
+02:09:32 | INFO    | [lossmeter] chunk 13 完成（84/196 层）
+02:10:39 | INFO    | [lossmeter] chunk 14 完成（90/196 层）
+02:12:28 | INFO    | [lossmeter] chunk 15 完成（96/196 层）
+02:14:17 | INFO    | [lossmeter] chunk 16 完成（102/196 层）
+02:16:12 | INFO    | [lossmeter] chunk 17 完成（108/196 层）
+02:18:05 | INFO    | [lossmeter] chunk 18 完成（114/196 层）
+02:19:57 | INFO    | [lossmeter] chunk 19 完成（120/196 层）
+02:21:49 | INFO    | [lossmeter] chunk 20 完成（126/196 层）
+02:22:55 | INFO    | [lossmeter] chunk 21 完成（132/196 层）
+02:24:43 | INFO    | [lossmeter] chunk 22 完成（138/196 层）
+02:26:30 | INFO    | [lossmeter] chunk 23 完成（144/196 层）
+02:28:22 | INFO    | [lossmeter] chunk 24 完成（150/196 层）
+02:30:14 | INFO    | [lossmeter] chunk 25 完成（156/196 层）
+02:32:05 | INFO    | [lossmeter] chunk 26 完成（162/196 层）
+02:34:01 | INFO    | [lossmeter] chunk 27 完成（168/196 层）
+02:35:07 | INFO    | [lossmeter] chunk 28 完成（174/196 层）
+02:36:56 | INFO    | [lossmeter] chunk 29 完成（180/196 层）
+02:38:45 | INFO    | [lossmeter] chunk 30 完成（186/196 层）
+02:40:39 | INFO    | [lossmeter] chunk 31 完成（192/196 层）
+02:42:18 | INFO    | [lossmeter] chunk 32 完成（196/196 层）
+02:42:18 | INFO    | [lossmeter] 全部完成：196 层 × 8 选项，耗时 3450.4s
+02:42:18 | INFO    | 损失表完成：196 层 × 8 选项 → results/losses_qwen1.5B.json
+=== 1.5B allocate dp t=2.75 ===
+02:42:24 | INFO    | 分配完成：目标 2.75 bit，实际 2.750 bit，预测总损失 1.117e+10
+分布：{'w4g128': 11, 'w3g128': 95, 'w2g128': 90}
+→ results/alloc_qwen1.5B_t2.75_dp.json
+02:42:29 | INFO    | 分配地图：results/alloc_qwen1.5B_t2.75_dp_map.png
+=== 1.5B allocate greedy t=2.75 ===
+02:42:34 | INFO    | 分配完成：目标 2.75 bit，实际 2.750 bit，预测总损失 1.175e+10
+分布：{'w3g128': 114, 'w2g128': 78, 'w4g128': 4}
+→ results/alloc_qwen1.5B_t2.75_greedy.json
+02:42:39 | INFO    | 分配完成：目标 2.75 bit，实际 -1.000 bit，预测总损失 1.895e+09
+分布：{'w4g128': 196}
+→ results/alloc_qwen1.5B_t2.75_unifw4.json
+=== 1.5B apply dp t=2.75 ===
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  91%|█████████ | 308/338 [00:00<00:00, 3060.88it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 3261.83it/s]
+02:43:03 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B 加载完成：1544M params @ cuda:0, dtype=torch.bfloat16
+02:43:05 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+02:43:23 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+03:00:03 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+03:00:05 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+03:00:28 | INFO    | 已应用 196 层（fp16 保留 0），PPL=2777.1957（预测损失 1.117e+10）→ results/apply_qwen1.5B_t2.75_dp.json
+=== 1.5B apply unifw4 t=2.75 ===
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  93%|█████████▎| 313/338 [00:00<00:00, 3102.14it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 3228.06it/s]
+03:00:58 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B 加载完成：1544M params @ cuda:0, dtype=torch.bfloat16
+03:01:01 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+03:01:20 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+03:18:11 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+03:18:13 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+03:18:28 | INFO    | 已应用 196 层（fp16 保留 0），PPL=9.8257（预测损失 1.895e+09）→ results/apply_qwen1.5B_t2.75_unifw4.json
+=== 1.5B allocate dp t=2.5 ===
+03:18:37 | INFO    | 分配完成：目标 2.50 bit，实际 2.500 bit，预测总损失 1.805e+10
+分布：{'w3g128': 52, 'w2g128': 143, 'w4g128': 1}
+→ results/alloc_qwen1.5B_t2.5_dp.json
+03:18:42 | INFO    | 分配地图：results/alloc_qwen1.5B_t2.5_dp_map.png
+=== 1.5B allocate greedy t=2.5 ===
+03:18:47 | INFO    | 分配完成：目标 2.50 bit，实际 2.500 bit，预测总损失 1.817e+10
+分布：{'w3g128': 66, 'w2g128': 129, 'w4g128': 1}
+→ results/alloc_qwen1.5B_t2.5_greedy.json
+03:18:51 | INFO    | 分配完成：目标 2.50 bit，实际 -1.000 bit，预测总损失 1.895e+09
+分布：{'w4g128': 196}
+→ results/alloc_qwen1.5B_t2.5_unifw4.json
+=== 1.5B apply dp t=2.5 ===
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 3486.45it/s]
+03:19:15 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B 加载完成：1544M params @ cuda:0, dtype=torch.bfloat16
+03:19:17 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+03:19:35 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+03:36:12 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+03:36:14 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+03:36:35 | INFO    | 已应用 196 层（fp16 保留 0），PPL=92628.0158（预测损失 1.805e+10）→ results/apply_qwen1.5B_t2.5_dp.json
+=== 1.5B apply unifw4 t=2.5 ===
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  87%|████████▋ | 295/338 [00:00<00:00, 2921.05it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 3250.38it/s]
+03:37:03 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B 加载完成：1544M params @ cuda:0, dtype=torch.bfloat16
+03:37:06 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+03:37:24 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+03:53:45 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+03:53:47 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+03:54:02 | INFO    | 已应用 196 层（fp16 保留 0），PPL=9.8257（预测损失 1.895e+09）→ results/apply_qwen1.5B_t2.5_unifw4.json
+=== 1.5B allocate dp t=2.25 ===
+03:54:11 | INFO    | 分配完成：目标 2.25 bit，实际 2.250 bit，预测总损失 3.948e+10
+分布：{'w2g128': 196}
+→ results/alloc_qwen1.5B_t2.25_dp.json
+03:54:15 | INFO    | 分配地图：results/alloc_qwen1.5B_t2.25_dp_map.png
+=== 1.5B allocate greedy t=2.25 ===
+03:54:20 | INFO    | 分配完成：目标 2.25 bit，实际 2.250 bit，预测总损失 3.948e+10
+分布：{'w2g128': 196}
+→ results/alloc_qwen1.5B_t2.25_greedy.json
+03:54:24 | INFO    | 分配完成：目标 2.25 bit，实际 -1.000 bit，预测总损失 1.895e+09
+分布：{'w4g128': 196}
+→ results/alloc_qwen1.5B_t2.25_unifw4.json
+=== 1.5B apply dp t=2.25 ===
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 3536.94it/s]
+03:54:49 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B 加载完成：1544M params @ cuda:0, dtype=torch.bfloat16
+03:54:52 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+03:55:10 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+04:11:19 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+04:11:21 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+04:11:41 | INFO    | 已应用 196 层（fp16 保留 0），PPL=475939.4281（预测损失 3.948e+10）→ results/apply_qwen1.5B_t2.25_dp.json
+=== 1.5B apply unifw4 t=2.25 ===
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  75%|███████▍  | 252/338 [00:00<00:00, 2501.23it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 3136.96it/s]
+04:12:11 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-1.5B 加载完成：1544M params @ cuda:0, dtype=torch.bfloat16
+04:12:14 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+04:12:31 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
+05:11:16 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+05:11:18 | INFO    | 文本 298938 tokens → 32 个 2048-token 块
+05:11:32 | INFO    | 已应用 196 层（fp16 保留 0），PPL=9.8257（预测损失 1.895e+09）→ results/apply_qwen1.5B_t2.25_unifw4.json
+05:11:54 | INFO    | 
+# LiteForge 压缩报告卡 — 0.5B
+
+> 自动生成于 35 条实验记录；全部数字可由仓库脚本一键复现。口径：剪枝/伪量化为方法学质量（稠密推理），部署速度单独由 vLLM 实测。
+
+## 一、压缩-质量对照（WikiText-2 PPL）
+
+| 方法 | 设置 | PPL ↓ |
+|---|---|---|
+| dense | - | 13.21 |
+| wanda | 0.5/unstructured | 25.52 |
+| magnitude | 0.5/unstructured | 485.58 |
+| rtn | W4/g128 | 15.69 |
+| rtn | W8/g128 | 13.22 |
+| wanda | 0.25/unstructured | 13.72 |
+| wanda | 0.6/unstructured | 76.71 |
+| wanda | 0.5/2:4 | 70.14 |
+| rtn | W3/g128 | 51.37 |
+| rtn | W4/g0 | 23.99 |
+| gptq | W4/g128 | 14.13 |
+| obc | 0.5/unstructured | 54.16 |
+| gptq | W4/g128 | 14.13 |
+| wanda-sgmix | - | 29.53 |
+| wanda-sgmix | - | 34.97 |
+| obc | 0.5/unstructured | 17.52 |
+| dense | - | 13.03 |
+
+## 二、预算分配（V2）
+
+- None @ target 2.25 bit：实际 2.250 bit，预测总损失 10577913774.7179，分布 {'w2g128': 168}
+- None @ target 2.25 bit：实际 2.250 
+05:11:58 | INFO    | 
+# LiteForge 压缩报告卡 — 1.5B
+
+> 自动生成于 27 条实验记录；全部数字可由仓库脚本一键复现。口径：剪枝/伪量化为方法学质量（稠密推理），部署速度单独由 vLLM 实测。
+
+## 一、压缩-质量对照（WikiText-2 PPL）
+
+| 方法 | 设置 | PPL ↓ |
+|---|---|---|
+| dense | - | 9.26 |
+| wanda | 0.5/unstructured | 13.34 |
+| rtn | W4/g128 | 10.37 |
+| obc | 0.5/unstructured | 13.73 |
+| gptq | W4/g128 | 9.91 |
+| obc | 0.5/unstructured | 11.67 |
+
+## 二、预算分配（V2）
+
+- None @ target 2.25 bit：实际 2.250 bit，预测总损失 39476888624.9424，分布 {'w2g128': 196}
+- None @ target 2.25 bit：实际 2.250 bit，预测总损失 39476888624.9425，分布 {'w2g128': 196}
+- None @ target 2.25 bit：实际 - bit，预测总损失 1895186689.3312，分布 {'w4g128': 196}
+- None @ target 2.5 bit：实际 2.500 bit，预测总损失 18051827756.6918，分布 {'w3g128': 52, 'w2g128': 143, 'w4g128': 1}
+- None @ target 2.5 bit：实际 2.500 bit，预测总损失 18169166051.5033，分布 {'w3g128': 66, 'w2g128': 129, 'w4g128'
+RESUME_DONE
