@@ -4,6 +4,7 @@ import itertools
 
 import numpy as np
 import pytest
+import torch
 
 from liteforge.allocate import build_bucket_menus, dp_allocate, greedy_allocate, uniform_assign
 
