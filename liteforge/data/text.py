@@ -46,10 +46,13 @@ def load_eval_text(spec: str) -> str:
 
 
 def tokenize_to_ids(tokenizer, text: str) -> list:
+    """兼容两种 tokenizer 返回协议：list[int] 或 torch tensor。"""
     ids = tokenizer(text, add_special_tokens=False)["input_ids"]
+    if isinstance(ids, torch.Tensor):
+        ids = ids.reshape(-1).tolist()
     if isinstance(ids[0], list):  # batch 返回
         ids = ids[0]
-    return list(ids)
+    return [int(i) for i in ids]
 
 
 def chunk_ids(ids: list, block_size: int = BLOCK_SIZE) -> list:
