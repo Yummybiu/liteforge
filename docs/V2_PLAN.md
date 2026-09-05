@@ -1,6 +1,11 @@
 # LiteForge V2 设计：压缩预算的统一分配（Unified Compression Budgeting）
 
-> 状态：设计定稿 2026-09-04。V1（方法实现与评测管线）已完成，见 README/EXPERIMENT_PLAN。
+> 状态更新 2026-09-04：**核心已落地并通过 33 项单测**（lossmeter.py / allocate.py /
+> loss-report·allocate·apply-alloc 三命令 / 分配地图），见 decision_log D12-D15。
+> 剩余：真实模型实跑（scripts/run_budget_batch.sh，待 GPU 窗口）、
+> 柱子②能力损失地图、柱子③部署成本闭环。
+>
+> 原设计定稿 2026-09-04。V1（方法实现与评测管线）已完成，见 README/EXPERIMENT_PLAN。
 > 本文回答 V1 的遗留问题：*"实现已发表方法 ≠ 有竞争力的项目——缺一个自己的研究问题。"*
 
 ## 0. 研究问题（一句话）
