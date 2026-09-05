@@ -1,0 +1,6 @@
+=== 0.5B SmoothQuant W8A8 α 扫描 ===
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  11%|█         | 31/290 [00:00<00:00, 271.18it/s]Loading weights:  20%|██        | 59/290 [00:00<00:01, 193.00it/s]Loading weights:  29%|██▊       | 83/290 [00:00<00:01, 204.04it/s]Loading weights:  38%|███▊      | 110/290 [00:00<00:00, 225.61it/s]Loading weights:  49%|████▊     | 141/290 [00:00<00:00, 249.58it/s]Loading weights:  58%|█████▊    | 167/290 [00:00<00:00, 226.99it/s]Loading weights:  66%|██████▌   | 191/290 [00:00<00:00, 219.83it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 335.35it/s]
+23:51:33 | INFO    | 模型 F:/MyProgram/BIG/liteforge/cache/models/Qwen2.5-0.5B 加载完成：494M params @ cuda:0, dtype=torch.bfloat16
+23:51:43 | INFO    | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/parquet/parquet.py "HTTP/1.1 404 Not Found"
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+23:52:02 | INFO    | 文本 2517232 tokens → 1229 个 2048-token 块
