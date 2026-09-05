@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "liteforge"
-version = "0.1.0"
+version = "0.3.0"
 description = "LiteForge：LLM 压缩-评测-部署一站式工具箱（剪枝 / 量化 / 困惑度评测 / 推理基准）"
 readme = "README.md"
 requires-python = ">=3.10"

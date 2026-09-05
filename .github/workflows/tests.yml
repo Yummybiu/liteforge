@@ -19,6 +19,6 @@ jobs:
       - name: Install CPU torch + deps
         run: |
           pip install torch --index-url https://download.pytorch.org/whl/cpu
-          pip install transformers numpy pyyaml tqdm pytest
-      - name: Run offline unit tests
-        run: python -m pytest tests/ -q
+          pip install transformers numpy pyyaml tqdm pytest pytest-cov matplotlib
+      - name: Run offline unit tests with coverage
+        run: python -m pytest tests/ -q --cov=liteforge --cov-report=term-missing

@@ -8,4 +8,4 @@
 - report : 实验结果聚合与 trade-off 图
 """
 
-__version__ = "0.1.0"
+__version__ = "0.3.0"

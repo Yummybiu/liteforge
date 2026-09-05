@@ -7,6 +7,15 @@
 
 **LLM 压缩-评测-部署一站式工具箱：剪枝 / 量化 / 困惑度评测 / 部署基准，附带完整真实实验数据。**
 
+![LiteForge trade-off](docs/assets/hero.png)
+
+它回答一个具体的问题：*把一个开源 LLM 压下去，质量掉多少？部署能快多少？*
+—— 不做 RAG demo，不做微调套壳，只做一条从算法到系统的完整 trade-off 证据链。
+
+**六步上手**：[examples/](examples/README.md)（PPL → 剪枝 → 量化 → 预算分配 → W8A8 → 投机解码）；
+版本历史见 [CHANGELOG.md](CHANGELOG.md)；与第三方实现的交叉验证清单见
+[scripts/CROSSCHECK.md](scripts/CROSSCHECK.md)。
+
 > **V2（进行中）：压缩预算该花在哪？** —— 剪枝与量化在同一损失货币下计价
 > （`L = tr(ΔW·H·ΔWᵀ)`），逐层菜单化后用**精确 DP** 在任意平均比特预算下求最优
 > "剪/量化/保留"组合，与贪心/均匀策略消融对照。设计文档：
