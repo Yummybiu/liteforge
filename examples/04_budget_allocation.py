@@ -35,6 +35,7 @@ def run_loss(args):
 
 
 def run_alloc(args):
+    import numpy as np
     table = load_json(args.losses)["table"]
     dims = {l: int(np.prod(v["shape"])) for l, v in table.items()}
     menus = build_bucket_menus(table, granularity=0.25)
@@ -48,7 +49,7 @@ def run_alloc(args):
     save_json({"strategy": "dp", "target_bits": args.target_bits,
                "layers": dp["layers"]}, "results/example04_alloc.json")
     print("下一步: python -m liteforge.cli apply-alloc --model <模型> "
-          "--alloc results/example04_alloc.json --eval")
+          "--alloc results/example04_alloc.json")
 
 
 def main():

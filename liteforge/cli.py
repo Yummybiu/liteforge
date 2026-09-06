@@ -127,7 +127,8 @@ def cmd_prune(args):
     else:
         pruner_cls = WandaPruner if args.method == "wanda" else MagnitudePruner
         from .prune.base import PruneConfig
-        cfg = PruneConfig(sparsity=sparsity, structure=args.structure)
+        cfg = PruneConfig(sparsity=sparsity, structure=args.structure,
+                          include=tuple(args.include) if args.include else ())
         pruner = pruner_cls(model, cfg)
         result = pruner.run(calib_batches=calib, max_batches=args.calib_size)
     params.update({"layer_reports_n": len(result.layer_reports),
@@ -304,6 +305,7 @@ def cmd_allocate(args):
     dist = Counter(res["layers"].values())
     rec = build_record("allocate", rec_in.get("model", "?"), res["strategy"],
                        {"target_bits": args.target_bits,
+                        "strategy": res["strategy"],
                         "granularity": args.granularity,
                         "losses_file": args.losses},
                        {"predicted_total_loss": res["total_loss"],

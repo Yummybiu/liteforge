@@ -41,7 +41,7 @@
 > ```bash
 > python -m liteforge.cli loss-report --model <model> --chunk 6     # 逐层损失菜单
 > python -m liteforge.cli allocate --losses losses.json --target-bits 2.5 --strategy dp --plot
-> python -m liteforge.cli apply-alloc --model <model> --alloc alloc.json --eval   # 预测vs实际闭环
+> python -m liteforge.cli apply-alloc --model <model> --alloc alloc.json   # 应用+PPL验证闭环
 > python -m liteforge.cli smooth-alpha --model <model>              # W8A8 α 扫描
 > python -m liteforge.cli spec-bench --model <大> --draft <小> --k 4  # 投机解码
 > python -m liteforge.cli eval-mmlu --model <model> --n 500         # 下游评测

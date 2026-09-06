@@ -14,6 +14,9 @@ DTYPE_MAP = {
 }
 
 
+import transformers
+
+
 def load_model_and_tokenizer(model_id: str, device: str = "auto",
                              dtype: str = "auto", trust_remote: bool = False):
     from transformers import AutoModelForCausalLM, AutoTokenizer
