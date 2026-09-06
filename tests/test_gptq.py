@@ -57,3 +57,26 @@ def test_gptq_quantizer_end_to_end(tiny_model, tiny_tokenizer, sample_text):
     assert not torch.equal(m.weight.data, orig)
     q.restore()
     assert torch.equal(m.weight.data, orig)
+
+
+def test_gptq_act_order():
+    """act-order（按激活对角降序处理列 + static groups）：
+    含强离群激活列时应不劣于自然列序（文献：高激活列先量化）。"""
+    from liteforge.quant.gptq import _gptq_layer
+    from liteforge.utils.hessian import damp_inverse
+    g = torch.Generator().manual_seed(5)
+    n_in, n_out, T = 128, 32, 1024
+    A = torch.randn(n_in, n_in, generator=g) / (n_in ** 0.5)
+    X = torch.randn(T, n_in, generator=g) @ A.T
+    X[:, [10, 60, 100]] *= 20.0                  # 少数高激活列
+    W = torch.randn(n_out, n_in, generator=g) * 0.3
+    H = X.T @ X
+    U = torch.linalg.cholesky(damp_inverse(H), upper=True).float()
+    bits, gs = 3, 32                             # 3bit 差距更明显
+    Wo = _gptq_layer(W.clone(), U, bits, gs, False, act_order=True,
+                     h_diag=H.diagonal().float())
+    Wn = _gptq_layer(W.clone(), U, bits, gs, False)
+    ref = X @ W.T
+    e_o = (X @ Wo.T - ref).pow(2).mean().item()
+    e_n = (X @ Wn.T - ref).pow(2).mean().item()
+    assert e_o <= e_n * 1.05, f"act-order {e_o:.4f} 应不劣于自然序 {e_n:.4f}"

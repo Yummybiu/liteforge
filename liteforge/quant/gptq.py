@@ -24,13 +24,48 @@ logger = logging.getLogger(__name__)
 
 
 def _gptq_layer(W: torch.Tensor, U: torch.Tensor, bits: int, group_size: int,
-                symmetric: bool, blocksize: int = 128) -> torch.Tensor:
-    """对单层权重做 GPTQ 量化（W: [out, in] float32，返回伪量化副本）。"""
+                symmetric: bool, blocksize: int = 128,
+                act_order: bool = False, h_diag: torch.Tensor | None = None) -> torch.Tensor:
+    """对单层权重做 GPTQ 量化（W: [out, in] float32，返回伪量化副本）。
+
+    act_order=True（act-order/desc_act，官方代码特性、论文正文未含）：
+    按激活对角量降序处理列——高激活列先量化、误差反馈给低激活列。
+    需配 static groups（各组 scale/zero 由原始列序预计算），
+    否则重排后的"组起点重估"会混入错误列。
+    """
     n_out, n_in = W.shape
     qmax = 2 ** (bits - 1) - 1
     qpeak = 2 ** bits - 1
     qmin = -qmax if symmetric else 0   # 对称网格 [-qmax, qmax]，非对称 [0, qpeak]
     Wq = torch.empty_like(W)
+
+    if act_order:
+        assert h_diag is not None, "act_order 需要传入 H 对角线"
+        order = torch.argsort(h_diag.to(torch.float64), descending=True)
+        Wp = W[:, order]
+        Up = U[order][:, order]
+        # static groups：原始列序下预计算每列的 scale/zero
+        S_all, Z_all = group_params(W, bits, group_size, symmetric)  # [n_out, n_in]
+        Wq_p = torch.empty_like(Wp)
+        Sslice = Zslice = None
+        slice_start = 0
+        for j in range(n_in):
+            s = S_all[:, order[j]]
+            z = Z_all[:, order[j]]
+            d = Up[j, j]
+            w = Wp[:, j]
+            q = torch.clamp(torch.round(w / s) + z, qmin, qpeak)
+            dq = (q - z) * s
+            err = (w - dq) / d
+            Wq_p[:, j] = dq
+            if j + 1 < n_in:
+                Wp[:, j + 1:] -= err.unsqueeze(1) * Up[j, j + 1:].unsqueeze(0)
+        # 反重排回原始列序
+        inv = torch.empty_like(order)
+        inv[order] = torch.arange(n_in, device=order.device)
+        Wq[:, order] = Wq_p
+        return Wq
+
     Sslice = Zslice = None
     slice_start = 0
 
@@ -67,11 +102,13 @@ class GPTQQuantizer:
     """逐层 GPTQ 伪量化（同 RTNQuantizer：保留原始权重，可 restore）。"""
 
     def __init__(self, model, config, percdamp: float = 0.01, blocksize: int = 128,
-                 include: tuple = (), exclude: tuple = ("lm_head", "embed_out")):
+                 include: tuple = (), exclude: tuple = ("lm_head", "embed_out"),
+                 act_order: bool = False):
         self.model = model
         self.config = config          # RTNConfig 兼容：bits/group_size/symmetric
         self.percdamp = percdamp
         self.blocksize = blocksize
+        self.act_order = act_order
         self.linears = find_linears(model, include=include, exclude=exclude)
         self._backup: dict = {}
 
@@ -82,11 +119,15 @@ class GPTQQuantizer:
         for name, m in self.linears:
             self._backup[name] = m.weight.data.detach().clone()
             W = m.weight.data.to(torch.float32)
-            Hinv = damp_inverse(H_dict.pop(name), self.percdamp)
+            H = H_dict.pop(name)
+            Hinv = damp_inverse(H, self.percdamp)
             U = torch.linalg.cholesky(Hinv, upper=True).to(torch.float32)
             del Hinv
             Wq = _gptq_layer(W, U, self.config.bits, self.config.group_size,
-                             self.config.symmetric, self.blocksize)
+                             self.config.symmetric, self.blocksize,
+                             act_order=self.act_order,
+                             h_diag=H.diagonal().to(torch.float32) if self.act_order else None)
+            del H, U
             err = (Wq - W).abs().mean().item()
             errs.append(err)
             m.weight.data.copy_(Wq.to(m.weight.data.dtype))

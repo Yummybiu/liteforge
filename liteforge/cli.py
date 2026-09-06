@@ -182,7 +182,7 @@ def cmd_quant_gptq(args):
         cfg = RTNConfig(bits=args.bits, group_size=args.group_size)
         calib = BlockBatcher(tokenizer, load_eval_text(args.calib_dataset),
                              block_size=args.seqlen, batch_size=args.batch_size)
-        q = GPTQQuantizer(model, cfg, percdamp=args.percdamp)
+        q = GPTQQuantizer(model, cfg, percdamp=args.percdamp, act_order=args.act_order)
         report = q.quantize_(calib, max_batches=args.calib_size)
         metrics = eval_ppl_and_speed(model, tokenizer, args) if args.eval else {}
         if args.restore:
@@ -336,6 +336,11 @@ def cmd_apply_alloc(args):
                          block_size=args.seqlen, batch_size=args.batch_size)
     report = apply_allocation(model, alloc, calib, max_batches=args.calib_size,
                               chunk=args.chunk, percdamp=args.percdamp)
+    if args.save:
+        from .export import export_compressed
+        export_compressed(model, tokenizer, args.save,
+                          [{"type": "alloc", "alloc_file": args.alloc}])
+        logger.info("压缩模型已保存至 %s", args.save)
     metrics = eval_ppl_and_speed(model, tokenizer, args)
     rec = build_record("apply-alloc", args.model, "mixed",
                        {"alloc_file": args.alloc,
@@ -497,6 +502,8 @@ def main(argv=None):
     sp.add_argument("--calib-size", type=int, default=16)
     sp.add_argument("--calib-chars", type=int, default=200_000)
     sp.add_argument("--restore", action="store_true")
+    sp.add_argument("--act-order", action="store_true",
+                    help="按激活对角降序处理列（官方代码特性，配 static groups）")
     sp.add_argument("--eval", action="store_true")
     sp.add_argument("--out", default=None)
     sp.set_defaults(fn=cmd_quant_gptq)
@@ -551,6 +558,7 @@ def main(argv=None):
     sp.add_argument("--calib-size", type=int, default=16)
     sp.add_argument("--chunk", type=int, default=0)
     sp.add_argument("--percdamp", type=float, default=0.01)
+    sp.add_argument("--save", default=None, help="保存压缩模型+manifest（供下游 MMLU 等评测）")
     sp.add_argument("--out", default=None)
     sp.set_defaults(fn=cmd_apply_alloc)
 
