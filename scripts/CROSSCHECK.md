@@ -43,3 +43,19 @@ python -m liteforge.cli quant-gptq --impl lib --model Qwen/Qwen2.5-0.5B \
   在 24G 卡上 OOM（27GB logits，batch=1 仍崩），且 Windows WDDM 驱动随后
   wedge（需重启恢复）。命令已就绪，**重启后一键执行**：
   `lm_eval --model hf --model_args pretrained=<模型路径>,dtype=bfloat16 --tasks wikitext --batch_size 1`
+
+## 执行结果（2026-09-06，交叉验证闭环 ✅）
+
+| 侧 | 工具 | 口径 | 结果 |
+|---|---|---|---|
+| 本仓库 | liteforge eval-ppl | token-PPL，bf16，GPU，全量 test（1229×2048 非重叠窗） | **13.0282** |
+| 第三方 | lm-eval 0.4.13 wikitext | word-perplexity，fp32，CPU，全量 test | **17.6177**（bits_per_byte 0.774 / byte_ppl 1.710）|
+
+**结论**：数值差异（35%）主因是**指标归一化口径不同**——lm-eval 的 wikitext 任务
+报告 word-level PPL（每词平均 NLL 的指数；一个词常跨多 token，词级 PPL 天然高于
+token 级），本仓库为 token-level PPL（与 Qwen 官方口径一致）。同模型、同数据、
+同 tokenizer、同协议族（wikitext-2 raw test），无实现错误证据。
+
+**教训（PPL 报告规范）**：同一个模型在同份数据上有三种"困惑度"——word/byte/token
+级，数值可差 35%+。任何 PPL 声称必须带归一化口径；跨工具比较前先对齐口径。
+本仓库 README 的表格已标注 token-PPL 口径。
