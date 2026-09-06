@@ -90,7 +90,8 @@ def quantize_tensor(w: torch.Tensor, bits: int, group_size: int, symmetric: bool
         if n_in % group_size != 0:
             pad = group_size - (n_in % group_size)
             wf = torch.nn.functional.pad(wf, (0, pad))
-            deq, _, _ = _quant_groups(wf, bits, symmetric)
+            g = wf.reshape(n_out, -1, group_size)   # pad 后仍须分组量化，
+            deq, _, _ = _quant_groups(g, bits, symmetric)  # 否则静默退化为 per-row
             deq = deq.reshape(n_out, n_in + pad)[..., :n_in]
         else:
             g = wf.reshape(n_out, n_in // group_size, group_size)

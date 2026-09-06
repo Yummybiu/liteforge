@@ -21,7 +21,9 @@ def load_model_and_tokenizer(model_id: str, device: str = "auto",
     torch_dtype = DTYPE_MAP[dtype]
     kwargs = {"trust_remote_code": trust_remote}
     if torch_dtype != "auto":
-        kwargs["torch_dtype"] = torch_dtype
+        # transformers 5.x 把 torch_dtype 改名为 dtype（4.x 不认 dtype）
+        major = int(transformers.__version__.split(".")[0])
+        kwargs["dtype" if major >= 5 else "torch_dtype"] = torch_dtype
 
     model = AutoModelForCausalLM.from_pretrained(model_id, **kwargs)
     model.eval()

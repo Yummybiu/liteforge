@@ -29,6 +29,7 @@ def _gptq_layer(W: torch.Tensor, U: torch.Tensor, bits: int, group_size: int,
     n_out, n_in = W.shape
     qmax = 2 ** (bits - 1) - 1
     qpeak = 2 ** bits - 1
+    qmin = -qmax if symmetric else 0   # 对称网格 [-qmax, qmax]，非对称 [0, qpeak]
     Wq = torch.empty_like(W)
     Sslice = Zslice = None
     slice_start = 0
@@ -50,7 +51,7 @@ def _gptq_layer(W: torch.Tensor, U: torch.Tensor, bits: int, group_size: int,
             z = Zslice[:, j - slice_start]
             d = U[j, j]
             w = W[:, j]
-            q = torch.clamp(torch.round(w / s) + z, 0, qpeak)
+            q = torch.clamp(torch.round(w / s) + z, qmin, qpeak)
             dq = (q - z) * s
             err = (w - dq) / d
             Wq[:, j] = dq
