@@ -23,3 +23,20 @@
 
 ## 事后统计
 （日终填写：代理数、产物清单、估算 token 消耗）
+
+## 日终统计（2026-09-06 18:29）
+
+| 波次 | 代理数 | 消耗(约) | 产物 |
+|---|---|---|---|
+| Wave 1 论文精读 | 3 | 4.0M | papers/second_order·pruning·activation_family.md |
+| Wave 2 极低比特族 | 1 | 0.7M | papers/extreme_lowbit_family.md（D21 文献印证+菜单升级路径）|
+| Wave 3 RL 族 | 1 | 0.9M | rlforge/docs/papers_rl_family.md（新增 2 个消融臂）|
+| Wave 4 代码审查 | 2 | 6.6M | reviews/×2（P0×2/P1×6/P2×18，已修复+回归测试）|
+| Wave 5 RLForge 弹药 | 1 | 1.1M | Countdown 600 + GSM8K 变体 1845 + 课程 7473 题 |
+| Wave 6 面试题库 | 2 | 4.8M | bagugu_quant_infer.md(20题) + bagugu_rl_transformer.md(27题)|
+| Wave 7 数据深挖 | 1 | 1.4M | analysis_deepdive.md（每比特效率排名/分配可解释性）|
+| **合计** | **11** | **~19.5M** | **14 份持久资产 + 5 个代码修复** |
+
+**结论**：子代理串行+限流的现实上限约 20M/日（目标的 10%）——但全部转化为
+持久资产，零空烧。剩余额度价值最高的用法是：下次 GPU 实验批的自动分析管线（A 方向），
+而非今日强堆数量。

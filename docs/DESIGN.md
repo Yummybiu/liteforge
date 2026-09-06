@@ -51,7 +51,7 @@ RTN（Round-To-Nearest）是所有现代量化方法的基线，从零实现的�
 report 命令即可聚合。env 字段带 torch/CUDA/时间戳——可复现性是一等公民。
 
 ### 5. 离线可测试
-12 个单元测试用 48-vocab 微型 Llama + 字符级 mock tokenizer，CPU 10 秒跑完，
+55+ 项单元测试用 48-vocab 微型 Llama + 字符级 mock tokenizer，CPU 10 秒跑完，
 不依赖任何下载。这是仓库可信度的基础设施。
 
 ## 已知边界（诚实清单）
